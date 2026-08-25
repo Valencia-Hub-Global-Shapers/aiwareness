@@ -1,0 +1,14 @@
+{
+  "img001": { "file": "images/img001.jpg", "is_ai_generated": true },
+  "img002": { "file": "images/img002.jpg", "is_ai_generated": false },
+  "img003": { "file": "images/img003.jpg", "is_ai_generated": true },
+  "img004": { "file": "images/img004.jpg", "is_ai_generated": false },
+  "img005": { "file": "images/img005.jpg", "is_ai_generated": true },
+  "img006": { "file": "images/img006.jpg", "is_ai_generated": false },
+  "img007": { "file": "images/img007.jpg", "is_ai_generated": true },
+  "img008": { "file": "images/img008.jpg", "is_ai_generated": false },
+  "img009": { "file": "images/img009.jpg", "is_ai_generated": true },
+  "img010": { "file": "images/img010.jpg", "is_ai_generated": false },
+  "img011": { "file": "images/img011.jpg", "is_ai_generated": true },
+  "img012": { "file": "images/img012.jpg", "is_ai_generated": false }
+}

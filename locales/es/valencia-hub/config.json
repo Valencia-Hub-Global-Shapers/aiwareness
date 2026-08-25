@@ -1,0 +1,26 @@
+{
+  "hub": "valencia-hub",
+  "label": "Valencia, España",
+  "country": "España",
+  "language": "es",
+
+  "phase1_pool": [
+    "img001", "img002", "img003", "img004", "img005",
+    "img006", "img007", "img008", "img009", "img010",
+    "img011", "img012"
+  ],
+  "phase1_sample_size": 10,
+
+  "phase2": [
+    {
+      "id": "img001",
+      "title": "Manos y dedos irregulares",
+      "explanation": "Fíjate en el número de dedos y en cómo se doblan las articulaciones: los modelos de IA suelen generar manos con proporciones o cantidades incorrectas."
+    },
+    {
+      "id": "img002",
+      "title": "Textura de piel natural",
+      "explanation": "La piel real muestra poros, imperfecciones y variaciones de luz irregulares que las imágenes generadas por IA aún reproducen mal."
+    }
+  ]
+}

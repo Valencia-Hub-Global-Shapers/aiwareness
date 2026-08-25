@@ -1,0 +1,13 @@
+node_modules
+.next
+.env.local
+.DS_Store
+*.pyc
+__pycache__/
+
+# Generado por scripts/copy-locales-to-public.js en cada dev/build a
+# partir de locales/ y content/ — no se versiona.
+public/content
+public/locales
+
+*.tsbuildinfo

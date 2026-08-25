@@ -1,0 +1,19 @@
+{
+  "hub": "geneva-hub",
+  "label": "Ginebra, Suiza",
+  "country": "Switzerland",
+  "language": "en",
+
+  "phase1_pool": [
+    "img001", "img002", "img003", "img004", "img005", "img006"
+  ],
+  "phase1_sample_size": 5,
+
+  "phase2": [
+    {
+      "id": "img002",
+      "title": "Natural background clutter",
+      "explanation": "Real photos usually contain believable, slightly messy backgrounds. AI-generated scenes often smooth out or distort background detail."
+    }
+  ]
+}
