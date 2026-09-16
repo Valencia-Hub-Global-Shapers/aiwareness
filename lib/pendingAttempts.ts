@@ -27,7 +27,6 @@ export async function saveAttempt(attempt: Attempt): Promise<void> {
 
   const { error } = await supabase.from("attempts").insert(attempt);
   if (error) {
-    // eslint-disable-next-line no-console
     console.error("No se pudo guardar el intento, se reintentará más tarde:", error.message);
     writeQueue([...readQueue(), attempt]);
   }
