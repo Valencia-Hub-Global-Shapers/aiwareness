@@ -9,6 +9,31 @@ import { getImageUrl } from "@/lib/images";
 import { getDictionary } from "@/lib/i18n";
 import type { HubConfig, Manifest } from "@/lib/types";
 
+const URL_PATTERN = /(https?:\/\/[^\s)]+)/g;
+
+function LinkedText({ text }: { text: string }) {
+  const parts = text.split(URL_PATTERN);
+  return (
+    <>
+      {parts.map((part, i) =>
+        part.startsWith("http://") || part.startsWith("https://") ? (
+          <a
+            key={i}
+            href={part}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-signal underline"
+          >
+            {part}
+          </a>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </>
+  );
+}
+
 export default function Phase2Page() {
   const router = useRouter();
   const [config, setConfig] = useState<HubConfig | null>(null);
@@ -83,7 +108,9 @@ export default function Phase2Page() {
           {manifestEntry.is_ai_generated ? t.aiGenerated : t.realImage}
         </span>
         <h2 className="font-display text-2xl">{resource.title}</h2>
-        <p className="mt-2 text-paper/90">{resource.explanation}</p>
+        <p className="mt-2 text-paper/90">
+          <LinkedText text={resource.explanation} />
+        </p>
       </div>
 
       {isLast ? (
