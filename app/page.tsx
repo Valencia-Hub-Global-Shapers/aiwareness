@@ -82,9 +82,19 @@ export default function OnboardingPage() {
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center gap-8 px-6 py-12">
       <header>
-        <p className="font-mono text-sm uppercase tracking-widest text-signal">
-          Global Shapers
-        </p>
+        <div className="flex items-baseline justify-between gap-2">
+          <p className="font-mono text-sm uppercase tracking-widest text-signal">
+            Global Shapers
+          </p>
+          <a
+            href="https://valencia-hub-global-shapers.github.io/?lang=en"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-mute hover:underline"
+          >
+            Made from Valencia Hub
+          </a>
+        </div>
         <h1 className="font-display text-4xl leading-tight">AIwareness</h1>
         <p className="mt-2 text-mute">{t.subtitle}</p>
       </header>
