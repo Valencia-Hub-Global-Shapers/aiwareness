@@ -88,7 +88,7 @@ export default function OnboardingPage() {
             href="https://valencia-hub-global-shapers.github.io/?lang=en"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-mute hover:underline"
+            className="text-xs text-blue-400 underline hover:text-blue-300"
           >
             Made from Valencia Hub
           </a>
