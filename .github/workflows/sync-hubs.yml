@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "locales/**"
+  workflow_dispatch:
 
 jobs:
   sync-hubs:
