@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "AIwareness | Global Shapers",
@@ -14,8 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className="font-body min-h-screen bg-ink text-paper">
-        {children}
+      <body className="font-body flex min-h-screen flex-col bg-ink text-paper">
+        <div className="flex-1">{children}</div>
+        <Footer />
       </body>
     </html>
   );
