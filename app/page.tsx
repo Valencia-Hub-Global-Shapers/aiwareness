@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
 import { loadHubRegistry, findHub } from "@/lib/hubs";
 import { getDictionary } from "@/lib/i18n";
+import HubPicker from "@/components/HubPicker";
 import type { HubIndexEntry } from "@/lib/types";
 
 export default function OnboardingPage() {
@@ -20,8 +21,11 @@ export default function OnboardingPage() {
   useEffect(() => {
     loadHubRegistry()
       .then((registry) => {
-        setHubs(registry);
-        if (registry.length > 0) setHub(registry[0].id);
+        const sorted = [...registry].sort((a, b) =>
+          a.label.localeCompare(b.label)
+        );
+        setHubs(sorted);
+        if (sorted.length > 0) setHub(sorted[0].id);
       })
       .catch(() => setHubsError("No se pudo cargar la lista de hubs."));
   }, []);
@@ -123,20 +127,14 @@ export default function OnboardingPage() {
           />
         </label>
 
-        <label className="flex flex-col gap-2">
-          <span className="text-sm text-mute">{t.hubLabel}</span>
-          <select
-            value={hub}
-            onChange={(e) => setHub(e.target.value)}
-            className="rounded-xl border border-mute/40 bg-ink px-4 py-3 text-lg text-paper outline-none focus:border-signal"
-          >
-            {hubs.map((h) => (
-              <option key={h.id} value={h.id}>
-                {h.label}
-              </option>
-            ))}
-          </select>
-        </label>
+        <HubPicker
+          hubs={hubs}
+          value={hub}
+          onChange={setHub}
+          label={t.hubLabel}
+          placeholder={t.hubSearchPlaceholder}
+          noResultsText={t.hubNoResults}
+        />
 
         <label className="flex items-start gap-3 text-sm text-mute">
           <input

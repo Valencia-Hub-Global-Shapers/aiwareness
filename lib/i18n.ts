@@ -5,6 +5,8 @@ interface Dictionary {
     subtitle: string;
     birthYearLabel: string;
     hubLabel: string;
+    hubSearchPlaceholder: string;
+    hubNoResults: string;
     consent: string;
     errorInvalidYear: string;
     errorConsent: string;
@@ -49,6 +51,8 @@ const es: Dictionary = {
       "¿Sabrías distinguir una imagen real de una generada por IA? Averígualo en un minuto.",
     birthYearLabel: "Año de nacimiento",
     hubLabel: "Tu hub / ciudad",
+    hubSearchPlaceholder: "Busca tu hub...",
+    hubNoResults: "No se encontró ningún hub con ese nombre.",
     consent:
       "Acepto que se guarden mi año de nacimiento y hub de forma anónima, únicamente con fines estadísticos del proyecto.",
     errorInvalidYear: "Introduce un año de nacimiento válido.",
@@ -95,6 +99,8 @@ const en: Dictionary = {
       "Could you tell a real photo from an AI-generated one? Find out in a minute.",
     birthYearLabel: "Birth year",
     hubLabel: "Your hub / city",
+    hubSearchPlaceholder: "Search your hub...",
+    hubNoResults: "No hub found with that name.",
     consent:
       "I agree to store my birth year and hub anonymously, for the project's statistical purposes only.",
     errorInvalidYear: "Enter a valid birth year.",
