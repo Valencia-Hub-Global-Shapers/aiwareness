@@ -63,14 +63,17 @@ export default function ImageCard({
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
-        style={{ transform: `translateX(${dragX}px) rotate(${dragX / 20}deg)` }}
-        className="relative aspect-square w-full touch-none overflow-hidden rounded-2xl border border-mute/30 bg-paper/5 transition-transform"
+        style={{
+          transform: `translateX(${dragX}px) rotate(${dragX / 20}deg)`,
+          touchAction: "pan-y pinch-zoom",
+        }}
+        className="relative h-[65vh] w-full overflow-auto rounded-2xl border border-mute/30 bg-paper/5 transition-transform"
       >
         <Image
           src={imageUrl}
           alt={t.alt}
           fill
-          className="object-cover"
+          className="object-contain"
           sizes="(max-width: 480px) 100vw, 480px"
           priority
         />

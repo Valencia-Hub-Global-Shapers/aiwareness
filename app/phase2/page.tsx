@@ -90,12 +90,12 @@ export default function Phase2Page() {
         {t.trainingLabel} · {index + 1} / {config.phase2.length}
       </p>
 
-      <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-mute/30">
+      <div className="relative h-[65vh] w-full overflow-auto rounded-2xl border border-mute/30">
         <Image
           src={getImageUrl(manifestEntry.file)}
           alt={resource.title}
           fill
-          className="object-cover"
+          className="object-contain"
         />
       </div>
 

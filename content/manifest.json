@@ -10,5 +10,12 @@
   "img009": { "file": "images/img009.jpg", "is_ai_generated": true },
   "img010": { "file": "images/img010.jpg", "is_ai_generated": false },
   "img011": { "file": "images/img011.jpg", "is_ai_generated": true },
-  "img012": { "file": "images/img012.jpg", "is_ai_generated": false }
+  "img012": { "file": "images/img012.jpg", "is_ai_generated": false },
+  "img013": { "file": "images/img013.jpg", "is_ai_generated": true },
+  "img014": { "file": "images/img014.png", "is_ai_generated": true },
+  "img015": { "file": "images/img015.jpg", "is_ai_generated": true },
+  "img016": { "file": "images/img016.png", "is_ai_generated": true },
+  "img017": { "file": "images/img017.png", "is_ai_generated": true },
+  "img018": { "file": "images/img018.png", "is_ai_generated": true },
+  "img019": { "file": "images/img019.png", "is_ai_generated": true }
 }
