@@ -13,6 +13,11 @@
 
   "phase2": [
     {
+      "id": "img002",
+      "title": "Busca la marca de agua",
+      "explanation": "Antes de fijarte en cualquier detalle de la imagen, mira las esquinas: muchos generadores de IA añaden una marca de agua discreta. Gemini, por ejemplo, suele colocar la suya en la esquina inferior derecha. Herramientas como SynthID también incrustan marcas invisibles a simple vista pero detectables con las herramientas adecuadas."
+    },
+    {
       "id": "img001",
       "title": "De contar dedos a leer las manos difíciles",
       "explanation": "Antes bastaba con contar los dedos, pero los modelos actuales ya generan manos correctas en poses normales. Ahora fíjate en interacciones complejas: dedos entrelazados, manos sujetando un objeto pequeño, o manos parcialmente tapadas por pelo o ropa. Ahí es donde todavía aparecen dedos fusionados o de más."
@@ -36,6 +41,11 @@
       "id": "img009",
       "title": "Elementos de fondo repetidos",
       "explanation": "En escenas con multitudes o fondos detallados, busca caras o personas que se repitan de forma casi idéntica, o detalles duplicados de manera poco natural. Los modelos de IA tienden a clonar elementos de fondo en vez de generar variaciones únicas para cada uno."
+    },
+    {
+      "id": "img004",
+      "title": "Ese color demasiado perfecto",
+      "explanation": "Muchos modelos de IA tienen un estilo por defecto reconocible: colores más saturados de lo normal, alto contraste y un acabado casi plastificado, como si todo estuviera sobre-iluminado. Si una foto se ve \"demasiado bonita\" o con una paleta demasiado uniforme para ser real, esa es una pista tan válida como cualquier detalle concreto."
     },
     {
       "id": "img011",
