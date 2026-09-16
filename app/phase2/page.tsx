@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
+import ZoomableImage from "@/components/ZoomableImage";
 import { loadHubConfig, loadManifest } from "@/lib/hubConfig";
 import { getImageUrl } from "@/lib/images";
 import { getDictionary } from "@/lib/i18n";
@@ -90,14 +90,12 @@ export default function Phase2Page() {
         {t.trainingLabel} · {index + 1} / {config.phase2.length}
       </p>
 
-      <div className="relative h-[65vh] w-full overflow-auto rounded-2xl border border-mute/30">
-        <Image
-          src={getImageUrl(manifestEntry.file)}
-          alt={resource.title}
-          fill
-          className="object-contain"
-        />
-      </div>
+      <ZoomableImage
+        src={getImageUrl(manifestEntry.file)}
+        alt={resource.title}
+        resetKey={index}
+        className="h-[65vh]"
+      />
 
       <div>
         <span

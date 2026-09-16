@@ -14,7 +14,6 @@ export default function OnboardingPage() {
   const [hubsError, setHubsError] = useState("");
   const [hub, setHub] = useState("");
   const [consent, setConsent] = useState(false);
-  const [mode, setMode] = useState<"simple" | "digital">("digital");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -75,7 +74,6 @@ export default function OnboardingPage() {
     localStorage.setItem("aiwareness_language", selectedHub.language);
     localStorage.setItem("aiwareness_country", selectedHub.country);
     localStorage.setItem("aiwareness_birth_year", String(year));
-    localStorage.setItem("aiwareness_mode", mode);
     router.push("/phase1");
   }
 
@@ -139,46 +137,6 @@ export default function OnboardingPage() {
             ))}
           </select>
         </label>
-
-        <fieldset className="flex flex-col gap-2">
-          <legend className="text-sm text-mute">{t.modeLegend}</legend>
-          <div className="grid grid-cols-2 gap-3">
-            <button
-              type="button"
-              onClick={() => setMode("simple")}
-              aria-pressed={mode === "simple"}
-              className={`rounded-xl border px-4 py-4 text-left transition ${
-                mode === "simple"
-                  ? "border-signal bg-signal/10"
-                  : "border-mute/40"
-              }`}
-            >
-              <span className="block font-display text-lg">
-                {t.modeSimpleTitle}
-              </span>
-              <span className="block text-sm text-mute">
-                {t.modeSimpleDesc}
-              </span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setMode("digital")}
-              aria-pressed={mode === "digital"}
-              className={`rounded-xl border px-4 py-4 text-left transition ${
-                mode === "digital"
-                  ? "border-signal bg-signal/10"
-                  : "border-mute/40"
-              }`}
-            >
-              <span className="block font-display text-lg">
-                {t.modeDigitalTitle}
-              </span>
-              <span className="block text-sm text-mute">
-                {t.modeDigitalDesc}
-              </span>
-            </button>
-          </div>
-        </fieldset>
 
         <label className="flex items-start gap-3 text-sm text-mute">
           <input

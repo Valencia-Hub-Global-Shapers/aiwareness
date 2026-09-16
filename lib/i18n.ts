@@ -5,11 +5,6 @@ interface Dictionary {
     subtitle: string;
     birthYearLabel: string;
     hubLabel: string;
-    modeLegend: string;
-    modeSimpleTitle: string;
-    modeSimpleDesc: string;
-    modeDigitalTitle: string;
-    modeDigitalDesc: string;
     consent: string;
     errorInvalidYear: string;
     errorConsent: string;
@@ -42,7 +37,6 @@ interface Dictionary {
     backHome: string;
   };
   imageCard: {
-    swipeHint: string;
     real: string;
     aiGenerated: string;
     alt: string;
@@ -55,11 +49,6 @@ const es: Dictionary = {
       "¿Sabrías distinguir una imagen real de una generada por IA? Averígualo en un minuto.",
     birthYearLabel: "Año de nacimiento",
     hubLabel: "Tu hub / ciudad",
-    modeLegend: "Elige tu modo",
-    modeSimpleTitle: "Modo simple",
-    modeSimpleDesc: "Botones grandes, sin gestos",
-    modeDigitalTitle: "Modo rápido",
-    modeDigitalDesc: "Desliza izquierda / derecha",
     consent:
       "Acepto que se guarden mi año de nacimiento y hub de forma anónima, únicamente con fines estadísticos del proyecto.",
     errorInvalidYear: "Introduce un año de nacimiento válido.",
@@ -94,8 +83,6 @@ const es: Dictionary = {
     backHome: "Volver al inicio",
   },
   imageCard: {
-    swipeHint:
-      "Desliza derecha si crees que es real, izquierda si crees que es IA. También puedes usar los botones.",
     real: "Real",
     aiGenerated: "Generada por IA",
     alt: "Imagen a evaluar",
@@ -108,11 +95,6 @@ const en: Dictionary = {
       "Could you tell a real photo from an AI-generated one? Find out in a minute.",
     birthYearLabel: "Birth year",
     hubLabel: "Your hub / city",
-    modeLegend: "Choose your mode",
-    modeSimpleTitle: "Simple mode",
-    modeSimpleDesc: "Large buttons, no gestures",
-    modeDigitalTitle: "Quick mode",
-    modeDigitalDesc: "Swipe left / right",
     consent:
       "I agree to store my birth year and hub anonymously, for the project's statistical purposes only.",
     errorInvalidYear: "Enter a valid birth year.",
@@ -147,8 +129,6 @@ const en: Dictionary = {
     backHome: "Back to start",
   },
   imageCard: {
-    swipeHint:
-      "Swipe right if you think it's real, left if you think it's AI. You can also use the buttons.",
     real: "Real",
     aiGenerated: "AI-generated",
     alt: "Image to evaluate",

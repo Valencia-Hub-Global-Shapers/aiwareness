@@ -1,57 +1,28 @@
 "use client";
 
-import { useRef, useState } from "react";
-import Image from "next/image";
+import ZoomableImage from "@/components/ZoomableImage";
 import { getDictionary } from "@/lib/i18n";
 
 interface ImageCardProps {
   imageUrl: string;
   index: number;
   total: number;
-  mode: "simple" | "digital";
   language?: string | null;
   onAnswer: (answeredAiGenerated: boolean) => void;
 }
 
 /**
- * Tarjeta de fase 1. Siempre ofrece dos botones grandes y claros.
- * En modo "digital" además permite deslizar (swipe) como atajo, pero el
- * botón nunca desaparece: la accesibilidad no es opcional.
- * No se muestra ningún feedback de acierto/error tras responder.
+ * Tarjeta de fase 1: siempre ofrece dos botones grandes y claros. No se
+ * muestra ningún feedback de acierto/error tras responder.
  */
 export default function ImageCard({
   imageUrl,
   index,
   total,
-  mode,
   language,
   onAnswer,
 }: ImageCardProps) {
-  const [dragX, setDragX] = useState(0);
-  const startX = useRef<number | null>(null);
   const t = getDictionary(language).imageCard;
-
-  function handlePointerDown(e: React.PointerEvent) {
-    if (mode !== "digital") return;
-    startX.current = e.clientX;
-  }
-
-  function handlePointerMove(e: React.PointerEvent) {
-    if (mode !== "digital" || startX.current === null) return;
-    setDragX(e.clientX - startX.current);
-  }
-
-  function handlePointerUp() {
-    if (mode !== "digital" || startX.current === null) return;
-    const threshold = 100;
-    if (dragX > threshold) {
-      onAnswer(false); // derecha = "real"
-    } else if (dragX < -threshold) {
-      onAnswer(true); // izquierda = "generada por IA"
-    }
-    startX.current = null;
-    setDragX(0);
-  }
 
   return (
     <div className="flex flex-col gap-6">
@@ -59,29 +30,14 @@ export default function ImageCard({
         {index + 1} / {total}
       </p>
 
-      <div
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-        style={{
-          transform: `translateX(${dragX}px) rotate(${dragX / 20}deg)`,
-          touchAction: "pan-y pinch-zoom",
-        }}
-        className="relative h-[65vh] w-full overflow-auto rounded-2xl border border-mute/30 bg-paper/5 transition-transform"
-      >
-        <Image
-          src={imageUrl}
-          alt={t.alt}
-          fill
-          className="object-contain"
-          sizes="(max-width: 480px) 100vw, 480px"
-          priority
-        />
-      </div>
-
-      {mode === "digital" && (
-        <p className="text-center text-xs text-mute">{t.swipeHint}</p>
-      )}
+      <ZoomableImage
+        src={imageUrl}
+        alt={t.alt}
+        sizes="(max-width: 480px) 100vw, 480px"
+        priority
+        resetKey={index}
+        className="h-[65vh]"
+      />
 
       <div className="grid grid-cols-2 gap-4">
         <button

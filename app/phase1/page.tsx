@@ -37,7 +37,6 @@ export default function Phase1Page() {
   const [config, setConfig] = useState<HubConfig | null>(null);
   const [images, setImages] = useState<ResolvedImage[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [mode, setMode] = useState<"simple" | "digital">("digital");
   const [results, setResults] = useState<Attempt[]>([]);
   const [participant, setParticipant] = useState<Participant | null>(null);
   const [loadError, setLoadError] = useState("");
@@ -51,10 +50,6 @@ export default function Phase1Page() {
       return;
     }
     setParticipant(found);
-    setMode(
-      (localStorage.getItem("aiwareness_mode") as "simple" | "digital") ||
-        "digital"
-    );
 
     // Reintenta cualquier "attempt" que no se pudiera guardar en una
     // sesión anterior (ver lib/pendingAttempts.ts).
@@ -137,7 +132,6 @@ export default function Phase1Page() {
         imageUrl={getImageUrl(question.file)}
         index={currentIndex}
         total={images.length}
-        mode={mode}
         language={participant?.language}
         onAnswer={handleAnswer}
       />
