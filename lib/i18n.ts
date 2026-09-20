@@ -37,6 +37,11 @@ interface Dictionary {
     incorrect: string;
     learnMore: string;
     backHome: string;
+    shareTitle: string;
+    shareInvite: string;
+    shareWhatsapp: string;
+    shareCopy: string;
+    shareCopied: string;
   };
   imageCard: {
     real: string;
@@ -85,6 +90,11 @@ const es: Dictionary = {
     incorrect: "Fallaste",
     learnMore: "Quiero aprender a identificarlas mejor",
     backHome: "Volver al inicio",
+    shareTitle: "Comparte tu resultado",
+    shareInvite: "¿Sabrías distinguir una foto real de una de IA? Pruébalo:",
+    shareWhatsapp: "WhatsApp",
+    shareCopy: "Copiar",
+    shareCopied: "¡Copiado!",
   },
   imageCard: {
     real: "Real",
@@ -133,6 +143,11 @@ const en: Dictionary = {
     incorrect: "Incorrect",
     learnMore: "I want to learn to identify them better",
     backHome: "Back to start",
+    shareTitle: "Share your result",
+    shareInvite: "Can you tell a real photo from an AI one? Try it:",
+    shareWhatsapp: "WhatsApp",
+    shareCopy: "Copy",
+    shareCopied: "Copied!",
   },
   imageCard: {
     real: "Real",

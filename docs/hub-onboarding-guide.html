@@ -70,7 +70,7 @@
 
   <h3 class="dec"><span class="no">1</span>Language</h3>
   <p>The interface (buttons, consent text, results screen) is currently available in <b>Spanish</b> and <b>English</b>. If your hub uses one of those, there's nothing to do.</p>
-  <p>If your hub uses <b>another language</b>, the interface needs a translation of <b>32 short strings</b> (listed in Appendix B). Without it, your community would see the Spanish interface. Your training texts are always written in your own language, whatever the interface.</p>
+  <p>If your hub uses <b>another language</b>, the interface needs a translation of <b>37 short strings</b> (listed in Appendix B). Without it, your community would see the Spanish interface. Your training texts are always written in your own language, whatever the interface.</p>
 
   <h3 class="dec"><span class="no">2</span>Images</h3>
   <p>All hubs share <b>one image bank</b>: currently <b>107 images (57 AI-generated, 50 real)</b>. Each image is labelled real or AI once, centrally, so your hub never has to. The photos and AI images come from the open <i>Defactify Image Dataset</i> (real photos from MS COCO, AI images from Midjourney 6). Your options:</p>
@@ -123,7 +123,7 @@
     <tr><td class="k">Identity</td><td>Hub name as it should appear (e.g. "Lisbon, Portugal"), country, language, and a contact person.</td></tr>
     <tr><td class="k">Images</td><td>Choose one or combine: <b>the whole shared bank</b> · <b>a list of ids</b> from the catalogue · <b>your own files</b> · <b>a number of extra images</b> from the generic dataset. Also say how many should be shown per session (default 10).</td></tr>
     <tr><td class="k">Explanations</td><td>Choose one: <b>reuse Valencia's Spanish set</b> · <b>reuse the English Generic set</b> · <b>your translation</b> of one of them · <b>your own texts</b> (for each image: its id or file name, a title, an explanation).</td></tr>
-    <tr><td class="k">Interface language</td><td>Only if it's not Spanish or English: the 32 strings from Appendix B, translated.</td></tr>
+    <tr><td class="k">Interface language</td><td>Only if it's not Spanish or English: the 37 strings from Appendix B, translated.</td></tr>
   </table>
 
   <h3 class="sub">If you send your own images</h3>
@@ -159,7 +159,7 @@
     <tr><td class="k"><code>locales/&lt;language&gt;/&lt;hub-id&gt;/config.json</code></td><td><span class="tag req">Always</span></td><td>New file. Your identity, image list and training texts. Start from a copy of <code>es/valencia-hub</code> or <code>en/generic-hub</code>.</td></tr>
     <tr><td class="k"><code>content/images/imgNNN.ext</code></td><td><span class="tag">If adding images</span></td><td>Add each new image at the next free id (currently <code>img108</code>). No subfolders.</td></tr>
     <tr><td class="k"><code>content/manifest.json</code></td><td><span class="tag">If adding images</span></td><td>One line per new image: its file and <code>is_ai_generated</code> true/false.</td></tr>
-    <tr><td class="k"><code>lib/i18n.ts</code></td><td><span class="tag">If not es / en</span></td><td>Add your language code, a dictionary with the 32 interface strings (Appendix B), and register it in <code>DICTIONARIES</code>.</td></tr>
+    <tr><td class="k"><code>lib/i18n.ts</code></td><td><span class="tag">If not es / en</span></td><td>Add your language code, a dictionary with the 37 interface strings (Appendix B), and register it in <code>DICTIONARIES</code>.</td></tr>
   </table>
   <p><b>Nothing else.</b> Don't touch <code>app/</code>, <code>components/</code>, <code>scripts/</code>, <code>supabase/</code> or <code>.github/</code>. The hub selector and the database's hub list are generated from your <code>config.json</code>, so there is no manual step in either.</p>
 
@@ -257,7 +257,7 @@ npm run lint &amp;&amp; npm run build       <span class="c"># optional, but CI r
     <tr><td class="k">Which set</td><td>☐ Valencia (Spanish) &nbsp; ☐ Generic (English) &nbsp; ☐ Translation attached &nbsp; ☐ Own texts attached</td></tr>
     <tr><td class="k">Local notes</td><td class="hint">Anything specific to your region we should know</td></tr>
     <tr><th class="sec" colspan="2">4 · Interface language (only if not Spanish or English)</th></tr>
-    <tr><td class="k">32 strings translated</td><td>☐ Attached (Appendix B)</td></tr>
+    <tr><td class="k">37 strings translated</td><td>☐ Attached (Appendix B)</td></tr>
   </table>
 
   <div class="pfoot"><span>AIwareness · Hub onboarding guide</span><span>06 / 07</span></div>
@@ -267,7 +267,7 @@ npm run lint &amp;&amp; npm run build       <span class="c"># optional, but CI r
 <section class="page">
   <div class="eyebrow"><span class="no">B</span><span>Appendix</span></div>
   <h2 class="title">Interface strings to translate</h2>
-  <p class="muted">Only needed if your hub's language is neither Spanish nor English. Translate the 32 English strings below, keeping the order. In Route B, these go into <code>lib/i18n.ts</code>.</p>
+  <p class="muted">Only needed if your hub's language is neither Spanish nor English. Translate the 37 English strings below, keeping the order. In Route B, these go into <code>lib/i18n.ts</code>.</p>
 
   <div class="strings" style="margin-top:5mm">
     <div>
@@ -306,9 +306,14 @@ npm run lint &amp;&amp; npm run build       <span class="c"># optional, but CI r
         <li>Incorrect</li>
         <li>I want to learn to identify them better</li>
         <li>Back to start</li>
+        <li>Share your result</li>
+        <li>Can you tell a real photo from an AI one? Try it:</li>
+        <li>WhatsApp</li>
+        <li>Copy</li>
+        <li>Copied!</li>
       </ol>
       <h5 class="gap">Training</h5>
-      <ol start="26">
+      <ol start="31">
         <li>Couldn't load your hub's training content.</li>
         <li>Loading training...</li>
         <li>Training</li>
@@ -319,6 +324,7 @@ npm run lint &amp;&amp; npm run build       <span class="c"># optional, but CI r
       </ol>
     </div>
   </div>
+  <p class="muted" style="margin-top:6mm; font-size:8.2pt">Notes for translators: string 27 is the invitation sent along with a shared score (the score, the green and red squares and the site link are added automatically). "WhatsApp" is a brand name and normally stays as it is.</p>
 
   <div class="foot">
     <div class="grid">

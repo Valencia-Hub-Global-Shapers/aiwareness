@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import ShareResults from "@/components/ShareResults";
 import { getDictionary } from "@/lib/i18n";
 import { getImageUrl } from "@/lib/images";
 import type { Attempt, ResolvedImage } from "@/lib/types";
@@ -45,6 +46,11 @@ export default function ResultsPage() {
         </h1>
         <p className="mt-4 text-ink-soft">{t.description}</p>
       </header>
+
+      <ShareResults
+        answers={results.map((r) => r.correct)}
+        language={language}
+      />
 
       <ul>
         {results.map((r, i) => {
