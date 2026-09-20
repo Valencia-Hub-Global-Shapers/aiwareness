@@ -8,6 +8,24 @@ import { getDictionary } from "@/lib/i18n";
 import HubPicker from "@/components/HubPicker";
 import type { HubIndexEntry } from "@/lib/types";
 
+/**
+ * Hub preseleccionado: el primero cuyo idioma coincide con las preferencias
+ * del dispositivo (en orden), o el primero de la lista si ninguno coincide.
+ * Solo es un punto de partida: el usuario puede elegir otro hub, y el país
+ * que se guarda sale siempre del hub elegido, no del dispositivo.
+ */
+function pickDefaultHub(hubs: HubIndexEntry[]): string {
+  const preferred = navigator.languages?.length
+    ? navigator.languages
+    : [navigator.language];
+  for (const locale of preferred) {
+    const language = locale.toLowerCase().split("-")[0];
+    const match = hubs.find((h) => h.language === language);
+    if (match) return match.id;
+  }
+  return hubs[0].id;
+}
+
 export default function OnboardingPage() {
   const router = useRouter();
   const [birthYear, setBirthYear] = useState("");
@@ -25,7 +43,7 @@ export default function OnboardingPage() {
           a.label.localeCompare(b.label)
         );
         setHubs(sorted);
-        if (sorted.length > 0) setHub(sorted[0].id);
+        if (sorted.length > 0) setHub(pickDefaultHub(sorted));
       })
       .catch(() => setHubsError("No se pudo cargar la lista de hubs."));
   }, []);
