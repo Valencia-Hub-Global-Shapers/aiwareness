@@ -1,5 +1,18 @@
 import type { Metadata } from "next";
+import { Newsreader, Work_Sans } from "next/font/google";
 import "./globals.css";
+
+const display = Newsreader({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-display",
+});
+
+const body = Work_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-body",
+});
 
 export const metadata: Metadata = {
   title: "AIwareness | Global Shapers",
@@ -13,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body className="font-body min-h-screen bg-ink text-paper">
+    <html lang="es" className={`${display.variable} ${body.variable}`}>
+      <body className="font-body min-h-screen bg-paper text-ink-soft">
         {children}
       </body>
     </html>

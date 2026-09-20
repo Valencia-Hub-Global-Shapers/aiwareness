@@ -26,7 +26,7 @@ export default function ResultsPage() {
   if (!images) {
     return (
       <main className="flex min-h-screen items-center justify-center">
-        <p className="text-mute">{t.loading}</p>
+        <p className="text-muted">{t.loading}</p>
       </main>
     );
   }
@@ -34,28 +34,30 @@ export default function ResultsPage() {
   const correctCount = results.filter((r) => r.correct).length;
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-md flex-col gap-8 px-6 py-12">
-      <header>
-        <p className="font-mono text-sm uppercase tracking-widest text-signal">
+    <main className="mx-auto flex min-h-screen max-w-md flex-col gap-10 px-6 py-10">
+      <header className="border-b border-line pb-8">
+        <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted">
           {t.title}
         </p>
-        <h1 className="font-display text-4xl">
-          {correctCount} / {results.length}
+        <h1 className="mt-4 font-display text-7xl leading-none tabular-nums text-ink">
+          {correctCount}
+          <span className="text-muted"> / {results.length}</span>
         </h1>
-        <p className="mt-2 text-mute">{t.description}</p>
+        <p className="mt-4 text-ink-soft">{t.description}</p>
       </header>
 
-      <ul className="flex flex-col gap-3">
+      <ul>
         {results.map((r, i) => {
           const question = images[i];
           return (
             <li
               key={question.id}
-              className={`flex items-center gap-4 rounded-xl border px-4 py-3 ${
-                r.correct ? "border-signal/40" : "border-alert/40"
-              }`}
+              className="flex items-center gap-4 border-b border-line py-3"
             >
-              <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg">
+              <span className="w-6 text-sm tabular-nums text-muted">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded bg-paper-2">
                 <Image
                   src={getImageUrl(question.file)}
                   alt=""
@@ -63,14 +65,16 @@ export default function ResultsPage() {
                   className="object-cover"
                 />
               </div>
-              <div className="text-sm">
-                <p className="text-paper">
-                  {question.is_ai_generated ? t.wasAiGenerated : t.wasReal}
-                </p>
-                <p className={r.correct ? "text-signal" : "text-alert"}>
-                  {r.correct ? t.correct : t.incorrect}
-                </p>
-              </div>
+              <p className="flex-1 text-sm text-ink">
+                {question.is_ai_generated ? t.wasAiGenerated : t.wasReal}
+              </p>
+              <p
+                className={`text-sm font-medium ${
+                  r.correct ? "text-blue" : "text-accent-deep"
+                }`}
+              >
+                {r.correct ? t.correct : t.incorrect}
+              </p>
             </li>
           );
         })}
@@ -79,13 +83,13 @@ export default function ResultsPage() {
       <div className="flex flex-col gap-3">
         <Link
           href="/phase2"
-          className="rounded-xl bg-signal px-6 py-4 text-center font-display text-lg text-ink transition hover:opacity-90"
+          className="rounded bg-blue px-6 py-4 text-center font-medium text-white transition hover:bg-blue-deep"
         >
           {t.learnMore}
         </Link>
         <Link
           href="/"
-          className="rounded-xl border border-mute/40 px-6 py-4 text-center text-mute transition hover:border-paper"
+          className="rounded border border-line-strong px-6 py-4 text-center text-ink transition hover:border-ink"
         >
           {t.backHome}
         </Link>

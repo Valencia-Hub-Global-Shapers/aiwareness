@@ -4,17 +4,25 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background-color: #10151a;
-  color: #f6f4ee;
+  background-color: #faf7f0;
+  color: #46433d;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #054985;
+  color: #fff;
 }
 
 /* Foco de teclado siempre visible, accesibilidad */
 :focus-visible {
-  outline: 3px solid #e6ff3c;
-  outline-offset: 2px;
+  outline: 2px solid #d6521d;
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {

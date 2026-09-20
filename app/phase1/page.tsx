@@ -111,7 +111,7 @@ export default function Phase1Page() {
   if (loadError) {
     return (
       <main className="flex min-h-screen items-center justify-center px-6 text-center">
-        <p className="text-alert">{loadError}</p>
+        <p className="text-accent-deep">{loadError}</p>
       </main>
     );
   }
@@ -119,7 +119,7 @@ export default function Phase1Page() {
   if (images.length === 0) {
     return (
       <main className="flex min-h-screen items-center justify-center">
-        <p className="text-mute">{t.preparing}</p>
+        <p className="text-muted">{t.preparing}</p>
       </main>
     );
   }

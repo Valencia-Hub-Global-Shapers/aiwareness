@@ -57,7 +57,7 @@ export default function HubPicker({
 
   return (
     <div ref={containerRef} className="relative flex flex-col gap-2">
-      <span className="text-sm text-mute">{label}</span>
+      <span className="text-sm font-medium text-ink">{label}</span>
       <input
         type="text"
         value={query}
@@ -67,20 +67,20 @@ export default function HubPicker({
           setQuery(e.target.value);
           setOpen(true);
         }}
-        className="rounded-xl border border-mute/40 bg-ink px-4 py-3 text-lg text-paper outline-none focus:border-signal"
+        className="rounded border border-line-strong bg-white px-4 py-3 text-lg text-ink outline-none transition focus:border-blue"
       />
       {open && (
-        <ul className="absolute top-full z-10 mt-1 max-h-60 w-full overflow-auto rounded-xl border border-mute/40 bg-ink shadow-lg">
+        <ul className="absolute top-full z-10 mt-1 max-h-60 w-full overflow-auto rounded border border-line-strong bg-white">
           {filtered.length === 0 ? (
-            <li className="px-4 py-3 text-sm text-mute">{noResultsText}</li>
+            <li className="px-4 py-3 text-sm text-muted">{noResultsText}</li>
           ) : (
             filtered.map((h) => (
               <li key={h.id}>
                 <button
                   type="button"
                   onClick={() => selectHub(h)}
-                  className={`block w-full px-4 py-3 text-left text-lg transition hover:bg-paper/10 ${
-                    h.id === value ? "text-signal" : "text-paper"
+                  className={`block w-full px-4 py-3 text-left text-lg transition hover:bg-paper-2 ${
+                    h.id === value ? "font-medium text-blue" : "text-ink"
                   }`}
                 >
                   {h.label}

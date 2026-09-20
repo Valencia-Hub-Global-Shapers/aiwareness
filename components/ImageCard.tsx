@@ -25,10 +25,18 @@ export default function ImageCard({
   const t = getDictionary(language).imageCard;
 
   return (
-    <div className="flex flex-col gap-6">
-      <p className="font-mono text-sm text-mute">
-        {index + 1} / {total}
-      </p>
+    <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-3">
+        <p className="text-sm tabular-nums text-muted">
+          {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+        </p>
+        <div className="h-0.5 bg-line">
+          <div
+            className="h-full bg-blue transition-all"
+            style={{ width: `${((index + 1) / total) * 100}%` }}
+          />
+        </div>
+      </div>
 
       <ZoomableImage
         src={imageUrl}
@@ -39,16 +47,16 @@ export default function ImageCard({
         className="h-[65vh]"
       />
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-3">
         <button
           onClick={() => onAnswer(false)}
-          className="rounded-xl border-2 border-paper/20 px-4 py-5 font-display text-xl transition hover:border-signal"
+          className="rounded border border-line-strong bg-white px-4 py-5 font-display text-xl text-ink transition hover:border-ink active:bg-paper-2"
         >
           {t.real}
         </button>
         <button
           onClick={() => onAnswer(true)}
-          className="rounded-xl border-2 border-paper/20 px-4 py-5 font-display text-xl transition hover:border-alert"
+          className="rounded border border-line-strong bg-white px-4 py-5 font-display text-xl text-ink transition hover:border-ink active:bg-paper-2"
         >
           {t.aiGenerated}
         </button>

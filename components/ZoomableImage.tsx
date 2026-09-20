@@ -72,7 +72,7 @@ export default function ZoomableImage({
 
   return (
     <div
-      className={`relative w-full overflow-hidden rounded-2xl border border-mute/30 bg-paper/5 ${className}`}
+      className={`relative w-full overflow-hidden rounded border border-line bg-paper-2 ${className}`}
       style={{ touchAction: isZoomed ? "none" : "pan-y" }}
     >
       <div
@@ -102,7 +102,7 @@ export default function ZoomableImage({
           onClick={zoomOut}
           disabled={scale <= MIN_SCALE}
           aria-label="Zoom out"
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-mute/30 bg-ink/70 text-lg leading-none text-paper transition hover:border-signal disabled:opacity-30"
+          className="flex h-9 w-9 items-center justify-center rounded-full border border-line-strong bg-paper/90 text-lg leading-none text-ink transition hover:border-ink disabled:opacity-30"
         >
           −
         </button>
@@ -111,7 +111,7 @@ export default function ZoomableImage({
           onClick={zoomIn}
           disabled={scale >= MAX_SCALE}
           aria-label="Zoom in"
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-mute/30 bg-ink/70 text-lg leading-none text-paper transition hover:border-signal disabled:opacity-30"
+          className="flex h-9 w-9 items-center justify-center rounded-full border border-line-strong bg-paper/90 text-lg leading-none text-ink transition hover:border-ink disabled:opacity-30"
         >
           +
         </button>

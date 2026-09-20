@@ -82,89 +82,94 @@ export default function OnboardingPage() {
   }
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center gap-8 px-6 py-12">
-      <header>
-        <div className="flex items-baseline justify-between gap-2">
-          <p className="font-mono text-sm uppercase tracking-widest text-signal">
-            Global Shapers
-          </p>
-          <a
-            href="https://valencia-hub-global-shapers.github.io/?lang=en"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs text-sky-300/70 underline underline-offset-2 hover:text-sky-300"
-          >
-            Made from Valencia Hub
-          </a>
-        </div>
-        <h1 className="font-display text-4xl leading-tight">AIwareness</h1>
-        <p className="mt-2 text-mute">{t.subtitle}</p>
+    <main className="mx-auto flex min-h-screen max-w-md flex-col px-6 py-10">
+      <div className="flex items-baseline justify-between gap-2 text-xs">
+        <p className="font-medium uppercase tracking-[0.16em] text-muted">
+          Global Shapers
+        </p>
+        <a
+          href="https://valencia-hub-global-shapers.github.io/?lang=en"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue underline underline-offset-2 hover:text-blue-deep"
+        >
+          Made from Valencia Hub
+        </a>
+      </div>
+
+      <header className="mb-10 mt-16">
+        <h1 className="font-display text-5xl leading-none text-ink">
+          AIwareness
+        </h1>
+        <p className="mt-4 text-lg leading-snug text-ink-soft">{t.subtitle}</p>
       </header>
 
-      {hubsError && <p className="text-sm text-alert">{hubsError}</p>}
+      {hubsError && <p className="text-sm text-accent-deep">{hubsError}</p>}
 
       {!hubsError && hubs === null && (
-        <p className="text-sm text-mute">{t.loading}</p>
+        <p className="text-sm text-muted">{t.loading}</p>
       )}
 
       {!hubsError && hubs !== null && hubs.length === 0 && (
-        <p className="text-sm text-alert">
+        <p className="text-sm text-accent-deep">
           No hay ningún hub configurado todavía.
         </p>
       )}
 
       {!hubsError && hubs !== null && hubs.length > 0 && (
-      <div className="flex flex-col gap-5">
-        <label className="flex flex-col gap-2">
-          <span className="text-sm text-mute">{t.birthYearLabel}</span>
-          <input
-            type="number"
-            inputMode="numeric"
-            placeholder="1995"
-            value={birthYear}
-            onChange={(e) => setBirthYear(e.target.value)}
-            className="rounded-xl border border-mute/40 bg-transparent px-4 py-3 text-lg text-paper outline-none focus:border-signal"
+        <div className="flex flex-col gap-6 border-t border-line pt-8">
+          <label className="flex flex-col gap-2">
+            <span className="text-sm font-medium text-ink">
+              {t.birthYearLabel}
+            </span>
+            <input
+              type="number"
+              inputMode="numeric"
+              placeholder="1995"
+              value={birthYear}
+              onChange={(e) => setBirthYear(e.target.value)}
+              className="rounded border border-line-strong bg-white px-4 py-3 text-lg text-ink outline-none transition focus:border-blue"
+            />
+          </label>
+
+          <HubPicker
+            hubs={hubs}
+            value={hub}
+            onChange={setHub}
+            label={t.hubLabel}
+            placeholder={t.hubSearchPlaceholder}
+            noResultsText={t.hubNoResults}
           />
-        </label>
 
-        <HubPicker
-          hubs={hubs}
-          value={hub}
-          onChange={setHub}
-          label={t.hubLabel}
-          placeholder={t.hubSearchPlaceholder}
-          noResultsText={t.hubNoResults}
-        />
+          <label className="flex items-start gap-3 text-sm leading-snug text-ink-soft">
+            <input
+              type="checkbox"
+              checked={consent}
+              onChange={(e) => setConsent(e.target.checked)}
+              className="mt-0.5 h-5 w-5 shrink-0 accent-blue"
+            />
+            {t.consent}
+          </label>
 
-        <label className="flex items-start gap-3 text-sm text-mute">
-          <input
-            type="checkbox"
-            checked={consent}
-            onChange={(e) => setConsent(e.target.checked)}
-            className="mt-1 h-5 w-5"
-          />
-          {t.consent}
-        </label>
+          {error && <p className="text-sm text-accent-deep">{error}</p>}
 
-        {error && <p className="text-sm text-alert">{error}</p>}
-
-        <button
-          onClick={handleStart}
-          disabled={loading}
-          className="rounded-xl bg-signal px-6 py-4 font-display text-lg text-ink transition hover:opacity-90 disabled:opacity-50"
-        >
-          {loading ? t.loading : t.start}
-        </button>
-      </div>
+          <button
+            onClick={handleStart}
+            disabled={loading}
+            className="rounded bg-blue px-6 py-4 font-medium text-white transition hover:bg-blue-deep disabled:opacity-50"
+          >
+            {loading ? t.loading : t.start}
+          </button>
+        </div>
       )}
 
-      <footer className="text-xs text-mute/70">
+      <footer className="mt-auto pt-12 text-xs leading-relaxed text-muted">
         Images from the{" "}
         <a
           href="https://huggingface.co/datasets/Rajarshi-Roy-research/Defactify_Image_Dataset"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline underline-offset-2 hover:text-mute"
+          className="underline underline-offset-2 hover:text-ink"
         >
           Defactify Image Dataset
         </a>{" "}
@@ -173,7 +178,7 @@ export default function OnboardingPage() {
           href="https://arxiv.org/abs/2601.00553"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline underline-offset-2 hover:text-mute"
+          className="underline underline-offset-2 hover:text-ink"
         >
           arXiv:2601.00553
         </a>
