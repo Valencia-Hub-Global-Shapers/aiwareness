@@ -8,11 +8,16 @@
 // Se toma como maximo una imagen por descripcion (Caption), para que la
 // misma escena no aparezca dos veces en el banco.
 //
+// Las fotos reales se normalizan al guardarlas (recorte cuadrado, 436x436,
+// nitidez y compresion como las de IA) para que no se distingan por calidad;
+// ver scripts/normalize-images.js.
+//
 // Despues, revisa las imagenes a ojo y sube con:
 //
 //   node --env-file=.env.local scripts/upload-images.js
 const fs = require("fs");
 const path = require("path");
+const { normalizeReal } = require("./normalize-images");
 
 const DATASET = "Rajarshi-Roy-research/Defactify_Image_Dataset";
 const SPLIT = "train";
@@ -129,11 +134,15 @@ async function main() {
         console.error(`Fila ${row_idx}: no se pudo descargar (${imgRes.status})`);
         continue;
       }
-      const buf = Buffer.from(await imgRes.arrayBuffer());
-      const ext = detectExtension(buf);
+      let buf = Buffer.from(await imgRes.arrayBuffer());
+      let ext = detectExtension(buf);
       if (!ext) {
         console.error(`Fila ${row_idx}: formato no soportado, se omite`);
         continue;
+      }
+      if (label === LABEL_REAL) {
+        buf = await normalizeReal(buf);
+        ext = ".jpg";
       }
 
       usedCaptions.add(caption);

@@ -3,6 +3,13 @@ const BUCKET = "aiwareness-images";
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 
 /**
+ * Subir este número cuando se sobrescriban en el bucket imágenes ya
+ * publicadas (mismo nombre de archivo): cambia la URL y evita que la caché
+ * de imágenes de Next/Vercel siga sirviendo la versión anterior.
+ */
+const IMAGE_BANK_VERSION = "2";
+
+/**
  * Resuelve la ruta de una imagen del manifest (p. ej. "images/img001.jpg")
  * a una URL cargable por <Image>.
  *
@@ -18,7 +25,7 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
  */
 export function getImageUrl(file: string): string {
   if (supabaseUrl) {
-    return `${supabaseUrl}/storage/v1/object/public/${BUCKET}/${file}`;
+    return `${supabaseUrl}/storage/v1/object/public/${BUCKET}/${file}?v=${IMAGE_BANK_VERSION}`;
   }
   // "file" ya incluye el prefijo "images/" (ver content/manifest.json),
   // y scripts/copy-locales-to-public.js copia content/ tal cual a

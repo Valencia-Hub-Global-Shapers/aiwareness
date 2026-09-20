@@ -41,6 +41,7 @@ aiwareness/
 │   ├── sync-hubs.js           # Sincroniza locales/ -> tabla "hubs"
 │   ├── setup-storage.js       # Crea el bucket de imágenes (una vez)
 │   ├── import-hf-images.js    # Descarga imágenes al azar de Hugging Face al banco
+│   ├── normalize-images.js    # Iguala nitidez/tamaño de las fotos reales a las de IA
 │   └── upload-images.js       # Sube content/images/ al bucket
 └── .env.example
 ```
@@ -228,7 +229,10 @@ navegador recordándolo.
    (Roy et al., 2026): las reales son fotos de MS COCO y las de IA son solo
    de Midjourney 6 (`Label_B` = 5). Las descarga a `content/images/` con el
    siguiente id libre y las registra en el manifest, sin repetir la misma
-   escena (caption) entre reales e IA. Aun así, **revisa las imágenes a
+   escena (caption) entre reales e IA. Las fotos reales se normalizan al
+   guardarlas (recorte cuadrado, 436×436, nitidez y compresión como las de
+   IA, ver `scripts/normalize-images.js`) para que no se distingan por
+   calidad en vez de por contenido. Aun así, **revisa las imágenes a
    ojo** (etiqueta correcta, nada inadecuado ni con personas
    identificables) antes de subirlas; para descartar una, borra el archivo
    y su línea del manifest.
@@ -236,7 +240,9 @@ navegador recordándolo.
    Otros hubs también podrán usarlas si les resultan relevantes.
 4. Tras fusionar el PR, quien mantenga el proyecto ejecuta
    `node scripts/upload-images.js` (con la `service_role key`) para
-   subir las imágenes nuevas al bucket — este paso no está automatizado
+   subir las imágenes nuevas al bucket (si sobrescribe imágenes ya
+   publicadas, sube también `IMAGE_BANK_VERSION` en `lib/images.ts` para
+   saltarse la caché de imágenes) — este paso no está automatizado
    en CI a propósito, porque requiere una clave que no debe exponerse a
    Pull Requests externos.
 
