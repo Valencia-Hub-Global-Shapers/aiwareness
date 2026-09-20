@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AIwareness — Hub onboarding guide</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .hero.bleed { padding-top: 14mm; padding-bottom: 9mm; }
+  .hero h1 { font-size: 29pt; max-width: 19ch; }
+  .hero .hero-intro { font-size: 10.6pt; line-height: 1.55; max-width: 108mm; margin-top: 4mm; }
+  .hero-eyebrow { margin-bottom: 5mm !important; }
+</style>
+</head>
+<body>
+
+<!-- ============================ PAGE 1 ============================ -->
+<section class="page">
+  <div class="hero bleed">
+    <div class="hero-motif" style="width:84mm; right:-14mm; top:-8mm"><img src="assets/mark-white.svg" alt=""></div>
+    <div class="hero-eyebrow">Global Shapers Valencia · Hub onboarding guide</div>
+    <h1>You've joined. Here's how your hub goes&nbsp;<em>live</em>.</h1>
+    <p class="hero-intro">What goes into a hub, and the two ways to get it into the app: tell us, or open a pull request.</p>
+  </div>
+  <div class="band-strip">AIwareness <i>·</i> Identity <i>·</i> Quiz images <i>·</i> Training texts <i>·</i> Route A <i>·</i> Route B</div>
+
+  <div class="eyebrow" style="margin-top:8mm"><span class="no">01</span><span>Overview</span></div>
+  <p class="lead" style="margin-top:3mm"><b>Your hub only contributes content.</b> Global Shapers Valencia runs the app, the database and the hosting. What makes a hub "yours" is one small configuration file plus, optionally, some new images. This guide explains what goes in that file and the two ways to get it into the app.</p>
+
+  <h3 class="sub" style="margin-top:6mm">What a hub is made of</h3>
+  <div class="pillars c3">
+    <div class="pillar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9Z"/></svg>
+      <h4>Identity</h4>
+      <p>The name shown in the hub selector (e.g. "Valencia, España"), your country, and the <b>language</b> your community will use.</p>
+    </div>
+    <div class="pillar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg>
+      <h4>Quiz images <span class="muted" style="font-weight:400">· phase 1</span></h4>
+      <p>Which images from the shared bank your community sees, and how many per session (10 by default, drawn at random).</p>
+    </div>
+    <div class="pillar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16M4 11h16M4 16h10"/></svg>
+      <h4>Training texts <span class="muted" style="font-weight:400">· phase 2</span></h4>
+      <p>For each training image: a short title and an explanation, in your language, of what gives an AI image away.</p>
+    </div>
+  </div>
+
+  <h2 class="title sm" style="margin-top:7mm">Two ways to get your hub live</h2>
+  <p class="muted">Both end the same way: your hub's file lands in the repository and the app picks it up on its own. No manual database step, no code change for a new hub. Choose whichever fits your team.</p>
+
+  <table>
+    <tr><th style="width:24mm"></th><th>Route A · Tell us</th><th>Route B · Open a pull request</th></tr>
+    <tr><td class="k">You do</td><td>Send us the information and any images by email, using the template in Appendix A.</td><td>Add your hub's files to the GitHub repository yourself and open a pull request.</td></tr>
+    <tr><td class="k">You need</td><td>Nothing technical.</td><td>A GitHub account and basic comfort editing a JSON file. Node.js only if you want to preview locally.</td></tr>
+    <tr><td class="k">We do</td><td>Write the config, add and upload images, review, deploy.</td><td>Review the PR, merge, and upload any new images.</td></tr>
+    <tr><td class="k">Best when</td><td>Your hub has no developer, or you want the shortest path.</td><td>A volunteer knows GitHub, or you want to keep editing your own texts later.</td></tr>
+    <tr><td class="k">Go to</td><td>Page 3</td><td>Pages 4–5</td></tr>
+  </table>
+
+  <div class="note">Not sure? Start with Route A. You can move to Route B later: once your hub exists, changing a text or the image list is a small edit to one file.</div>
+
+  <div class="pfoot"><span>AIwareness · Hub onboarding guide</span><span>01 / 07</span></div>
+</section>
+
+<!-- ============================ PAGE 2 ============================ -->
+<section class="page">
+  <div class="eyebrow"><span class="no">02</span><span>Before you start</span></div>
+  <h2 class="title">Three decisions to make first</h2>
+  <p class="muted">These apply to both routes. Settle them before you send anything or open a PR.</p>
+
+  <h3 class="dec"><span class="no">1</span>Language</h3>
+  <p>The interface (buttons, consent text, results screen) is currently available in <b>Spanish</b> and <b>English</b>. If your hub uses one of those, there's nothing to do.</p>
+  <p>If your hub uses <b>another language</b>, the interface needs a translation of <b>32 short strings</b> (listed in Appendix B). Without it, your community would see the Spanish interface. Your training texts are always written in your own language, whatever the interface.</p>
+
+  <h3 class="dec"><span class="no">2</span>Images</h3>
+  <p>All hubs share <b>one image bank</b>: currently <b>107 images (57 AI-generated, 50 real)</b>. Each image is labelled real or AI once, centrally, so your hub never has to. The photos and AI images come from the open <i>Defactify Image Dataset</i> (real photos from MS COCO, AI images from Midjourney 6). Your options:</p>
+  <table>
+    <tr><th style="width:42mm">Option</th><th>What it means</th></tr>
+    <tr><td class="k">Use the whole bank</td><td>The simplest option and our default suggestion. Your community gets a random 10 out of all 107.</td></tr>
+    <tr><td class="k">Pick a subset</td><td>If some images feel out of place for your region, choose the ones that fit. Ask us for the image catalogue (ids and labels) to choose from.</td></tr>
+    <tr><td class="k">Add your own</td><td>Real photos from your city or region, plus AI-generated images. They join the shared bank, so other hubs may use them too.</td></tr>
+    <tr><td class="k">More from the generic dataset</td><td>Want a bigger bank? Tell us how many extra AI and real images you'd like and we'll import them from the same dataset.</td></tr>
+  </table>
+  <div class="note"><b>Tip.</b> Images are drawn at random from your list, without balancing real and AI. Keep a healthy mix of both, and a list at least two to three times the number shown per session, so repeat players see different images.</div>
+
+  <h3 class="dec"><span class="no">3</span>Explanations <span class="muted" style="font-size:11pt">(the training phase)</span></h3>
+  <p>After the quiz, players can walk through training cards: <b>image + real/AI label + your title + your explanation</b>. Two complete sets already exist, one in Spanish (Valencia) and one in English (Generic). Each has 8 cards:</p>
+  <p class="muted" style="font-size:8.4pt"><b>img001</b> Look for the watermark · <b>img002</b> From counting fingers to reading tricky hands · <b>img003</b> Background text no longer gives it away · <b>img004</b> Patterns that break · <b>img005</b> Shadows and reflections that don't add up · <b>img006</b> Repeated background elements · <b>img007</b> That too-perfect colour · <b>img085</b> Want to learn more? (closing card with links)</p>
+  <div class="pillars c2" style="margin-top:2mm">
+    <div class="pillar blue">
+      <h4>Reuse what exists</h4>
+      <p>Spanish-speaking hubs can use Valencia's set as is. English-speaking hubs can use the Generic set. Nothing to write.</p>
+      <h4 style="margin-top:3mm">Translate</h4>
+      <p>We send you a set; you translate it into your language. Keep the same image ids so each text still matches its picture.</p>
+    </div>
+    <div class="pillar accent">
+      <h4>Write your own</h4>
+      <p>For your own images, or to add local context (regional signage, local scams, local languages or scripts). One short title and 2–4 sentences: <b>what to look at</b> and <b>why it gives the image away</b>.</p>
+      <p><b>Keep in mind:</b> a text describes a specific image (e.g. img002 points at hands holding a sandwich). If you change the image, change the text.</p>
+    </div>
+  </div>
+
+  <div class="pfoot"><span>AIwareness · Hub onboarding guide</span><span>02 / 07</span></div>
+</section>
+
+<!-- ============================ PAGE 3 ============================ -->
+<section class="page">
+  <div class="eyebrow"><span class="no">03</span><span>Route A</span></div>
+  <h2 class="title">Tell us what you want, we build it</h2>
+  <p class="muted">No GitHub, no code. You provide the content; Valencia Hub does everything technical.</p>
+
+  <ol class="steps" style="margin-top:4mm">
+    <li><b>Email us</b> at <a href="mailto:valencia.globalshapers@gmail.com">valencia.globalshapers@gmail.com</a> with your hub's name in the subject.</li>
+    <li><b>Fill in the template</b> (Appendix A) and attach or link any images and texts. Sections you leave on the default are fine.</li>
+    <li><b>We prepare your hub</b>: write the config, add and upload any new images, and check it. If something is unclear (an image label, a translation), we'll ask.</li>
+    <li><b>We deploy.</b> Your hub appears in the app's selector automatically once it's merged.</li>
+    <li><b>You test it and share it.</b> We tell you when it's live (see "Once you're live", page 5).</li>
+  </ol>
+
+  <h3 class="sub" style="margin-top:6mm">What to send</h3>
+  <table>
+    <tr><th style="width:32mm">Topic</th><th>Send us</th></tr>
+    <tr><td class="k">Identity</td><td>Hub name as it should appear (e.g. "Lisbon, Portugal"), country, language, and a contact person.</td></tr>
+    <tr><td class="k">Images</td><td>Choose one or combine: <b>the whole shared bank</b> · <b>a list of ids</b> from the catalogue · <b>your own files</b> · <b>a number of extra images</b> from the generic dataset. Also say how many should be shown per session (default 10).</td></tr>
+    <tr><td class="k">Explanations</td><td>Choose one: <b>reuse Valencia's Spanish set</b> · <b>reuse the English Generic set</b> · <b>your translation</b> of one of them · <b>your own texts</b> (for each image: its id or file name, a title, an explanation).</td></tr>
+    <tr><td class="k">Interface language</td><td>Only if it's not Spanish or English: the 32 strings from Appendix B, translated.</td></tr>
+  </table>
+
+  <h3 class="sub">If you send your own images</h3>
+  <ul class="check">
+    <li><b>Format and size:</b> .jpg, .png or .webp, up to about 5 MB each. Send them by email if there are a few, or as a shared-folder link if there are many.</li>
+    <li><b>The label must be right.</b> For each image tell us whether it is <b>real</b> or <b>AI-generated</b>. For AI images, name the tool that made it. A wrong label misleads players and skews the statistics.</li>
+    <li><b>You have the right to share it.</b> Photos you took, or images with a licence that allows public reuse. They'll be public and can be used by other hubs.</li>
+    <li><b>Nothing sensitive.</b> No identifiable people (especially minors), and nothing inappropriate or distressing. Real photos of places, objects, food, street scenes and nature work well.</li>
+    <li><b>Both classes.</b> Bring real and AI images in reasonable proportion, ideally not the same scene twice.</li>
+  </ul>
+
+  <h3 class="sub">If you write your own explanations</h3>
+  <ul class="plain">
+    <li>One <b>title</b> (a few words) and <b>2–4 sentences</b>, in your hub's language.</li>
+    <li>Say <b>what to look at</b> in this image and <b>why it gives it away</b>. Point at something visible in the picture.</li>
+    <li>Be honest that no single sign is foolproof: generators improve, so avoid absolute claims like "AI can't draw hands".</li>
+    <li>Links are welcome: any http/https address in a text becomes clickable.</li>
+    <li>Include at least one card. A closing "Want to learn more?" card with resources in your language is a nice touch.</li>
+  </ul>
+
+  <div class="pfoot"><span>AIwareness · Hub onboarding guide</span><span>03 / 07</span></div>
+</section>
+
+<!-- ============================ PAGE 4 ============================ -->
+<section class="page">
+  <div class="eyebrow"><span class="no">04</span><span>Route B</span></div>
+  <h2 class="title">Open a pull request</h2>
+  <p class="muted">You add your hub's files to the repository at <a href="https://github.com/Valencia-Hub-Global-Shapers/aiwareness">github.com/Valencia-Hub-Global-Shapers/aiwareness</a>. Automated checks tell you straight away if something is wrong.</p>
+
+  <h3 class="sub">What you'll touch</h3>
+  <table>
+    <tr><th style="width:58mm">File</th><th style="width:31mm"></th><th>What you do</th></tr>
+    <tr><td class="k"><code>locales/&lt;language&gt;/&lt;hub-id&gt;/config.json</code></td><td><span class="tag req">Always</span></td><td>New file. Your identity, image list and training texts. Start from a copy of <code>es/valencia-hub</code> or <code>en/generic-hub</code>.</td></tr>
+    <tr><td class="k"><code>content/images/imgNNN.ext</code></td><td><span class="tag">If adding images</span></td><td>Add each new image at the next free id (currently <code>img108</code>). No subfolders.</td></tr>
+    <tr><td class="k"><code>content/manifest.json</code></td><td><span class="tag">If adding images</span></td><td>One line per new image: its file and <code>is_ai_generated</code> true/false.</td></tr>
+    <tr><td class="k"><code>lib/i18n.ts</code></td><td><span class="tag">If not es / en</span></td><td>Add your language code, a dictionary with the 32 interface strings (Appendix B), and register it in <code>DICTIONARIES</code>.</td></tr>
+  </table>
+  <p><b>Nothing else.</b> Don't touch <code>app/</code>, <code>components/</code>, <code>scripts/</code>, <code>supabase/</code> or <code>.github/</code>. The hub selector and the database's hub list are generated from your <code>config.json</code>, so there is no manual step in either.</p>
+
+  <h3 class="sub">Anatomy of <code>config.json</code></h3>
+<pre>{
+  <span class="k">"hub"</span>: "your-city-hub",        <span class="c">// lowercase-with-hyphens; MUST equal the folder name</span>
+  <span class="k">"label"</span>: "Your City, Country",  <span class="c">// what players see in the hub selector</span>
+  <span class="k">"country"</span>: "Country",          <span class="c">// used to group the statistics</span>
+  <span class="k">"language"</span>: "en",              <span class="c">// MUST equal the parent folder: locales/en/...</span>
+
+  <span class="k">"phase1_pool"</span>: ["img001", "img002", "img003", "..."],  <span class="c">// ids from manifest.json</span>
+  <span class="k">"phase1_sample_size"</span>: 10,       <span class="c">// how many each player sees per session</span>
+
+  <span class="k">"phase2"</span>: [                     <span class="c">// training cards, shown in this order</span>
+    {
+      <span class="k">"id"</span>: "img001",             <span class="c">// which image the card shows</span>
+      <span class="k">"title"</span>: "Look for the watermark",
+      <span class="k">"explanation"</span>: "Before focusing on any other detail..."
+    }
+  ]
+}</pre>
+
+  <h3 class="sub">Rules your config must follow</h3>
+  <ul class="plain">
+    <li><code>hub</code>, <code>label</code>, <code>country</code> and <code>language</code> are all present, and <code>hub</code> matches its folder name.</li>
+    <li><code>phase1_pool</code> is not empty, and every id in it exists in <code>manifest.json</code>.</li>
+    <li><code>phase1_sample_size</code> is a number of 1 or more. If it's larger than your pool, players simply get the whole pool.</li>
+    <li>Every <code>phase2</code> entry has an existing <code>id</code>, a <code>title</code> and an <code>explanation</code>.</li>
+    <li><b>Not checked automatically, but required:</b> the folder must be <code>locales/&lt;language&gt;/&lt;hub-id&gt;/</code> with the same language code as inside the file (that's the path the app loads from), and <code>phase2</code> needs at least one entry (the training screen breaks without it).</li>
+    <li>Valid JSON: no trailing commas; escape double quotes inside texts as <code>\"</code>.</li>
+  </ul>
+
+  <div class="pfoot"><span>AIwareness · Hub onboarding guide</span><span>04 / 07</span></div>
+</section>
+
+<!-- ============================ PAGE 5 ============================ -->
+<section class="page">
+  <div class="eyebrow"><span class="no">04</span><span>Route B · continued</span></div>
+  <h2 class="title">Step by step</h2>
+
+  <ol class="steps tight" style="margin-top:3mm">
+    <li><b>Fork</b> the repository and create a branch, e.g. <code>add-your-city-hub</code>.</li>
+    <li><b>Copy a starting point.</b> Copy <code>locales/es/valencia-hub/</code> or <code>locales/en/generic-hub/</code> to <code>locales/&lt;language&gt;/&lt;hub-id&gt;/</code> and edit the four identity fields.</li>
+    <li><b>Set your images.</b> Edit <code>phase1_pool</code> (delete ids you don't want) and <code>phase1_sample_size</code>.</li>
+    <li><b>Write or translate <code>phase2</code>.</b> Keep the ids that match the images you want to teach with.</li>
+    <li><b>Only if you're adding images:</b> put the files in <code>content/images/</code> and add their lines to <code>content/manifest.json</code>, then reference the new ids from your config. Shortcut for the generic dataset: <code>node scripts/import-hf-images.js --ai 20 --real 20</code> downloads random images and registers them. Check each one by eye (label, nothing inappropriate) and delete rejects with their manifest line.</li>
+    <li><b>Only if your language isn't es or en:</b> add it in <code>lib/i18n.ts</code> (the <code>Language</code> type, a new dictionary with the same keys, and the <code>DICTIONARIES</code> map).</li>
+    <li><b>Check locally</b> (needs Node.js 18+):
+<pre>npm install
+node scripts/validate-configs.js   <span class="c"># the same check the PR will run</span>
+npm run dev                         <span class="c"># http://localhost:3000, nothing is saved</span>
+npm run lint &amp;&amp; npm run build       <span class="c"># optional, but CI runs both</span></pre>
+    </li>
+    <li><b>Open the pull request</b> titled "Add &lt;Hub name&gt; hub". Mention if you added images or a language.</li>
+  </ol>
+
+  <div class="note warn"><b>Previewing images locally.</b> Only a few bank images live in the repository; the rest are served from our storage, so most cards show broken images in <code>npm run dev</code>. That's expected. To see the real ones, ask us for the project URL and set it in <code>.env.local</code> as <code>NEXT_PUBLIC_SUPABASE_URL</code> only, leaving the anon key unset so nothing is saved.</div>
+
+  <h3 class="sub">What happens to your PR</h3>
+  <table>
+    <tr><td class="k" style="width:34mm">On opening</td><td><b>Validate hub configs</b> runs when you change <code>locales/</code> or the manifest, and <b>CI</b> runs lint and build. A red cross tells you exactly which file and field to fix.</td></tr>
+    <tr><td class="k">Review and merge</td><td>We look at the content: image labels, texts, translations. On merge, your hub is registered in the database automatically, the app redeploys and your hub shows up in the selector.</td></tr>
+    <tr><td class="k">New images</td><td>We upload them to storage by hand after merging (that step needs a key that can't be exposed to pull requests). Until then they show as broken, so say so in the PR description. If two hubs add images at once their ids may collide; we'll sort out the numbering with you.</td></tr>
+  </table>
+
+  <div class="eyebrow" style="margin-top:5mm"><span class="no">05</span><span>Once you're live</span></div>
+  <ul class="plain" style="margin-top:3mm">
+    <li><b>Test it yourself</b> on the deployed site: pick your hub, do the quiz, read the results, walk through the training.</li>
+    <li><b>Share it</b> at <b>aiwareness.vercel.app</b>. It needs no login and suits any age: events, workshops, schools, local groups.</li>
+    <li><b>Your results count.</b> They feed the cross-hub statistics by country, hub and age group.</li>
+    <li><b>Changing things later</b> is easy: email us (Route A) or open another PR (Route B).</li>
+  </ul>
+
+  <div class="pfoot"><span>AIwareness · Hub onboarding guide</span><span>05 / 07</span></div>
+</section>
+
+<!-- ============================ PAGE 6 ============================ -->
+<section class="page">
+  <div class="eyebrow"><span class="no">A</span><span>Appendix</span></div>
+  <h2 class="title">Information template</h2>
+  <p class="muted">Copy this into an email to <a href="mailto:valencia.globalshapers@gmail.com">valencia.globalshapers@gmail.com</a>, or fill it in and attach it. Skip anything you want left at the default.</p>
+
+  <table class="form">
+    <tr><th class="sec" colspan="2">1 · Hub</th></tr>
+    <tr><td class="k">Hub name in the selector</td><td class="hint">e.g. "Lisbon, Portugal"</td></tr>
+    <tr><td class="k">Country</td><td></td></tr>
+    <tr><td class="k">Language of your community</td><td></td></tr>
+    <tr><td class="k">Contact person and email</td><td></td></tr>
+    <tr><th class="sec" colspan="2">2 · Quiz images (phase 1)</th></tr>
+    <tr><td class="k">Shared bank</td><td>☐ Whole bank &nbsp;&nbsp; ☐ Only these ids: …</td></tr>
+    <tr><td class="k">Your own images</td><td>☐ No &nbsp;&nbsp; ☐ Yes, attached / linked. For each: real or AI? tool used? rights OK?</td></tr>
+    <tr><td class="k">Extra images from the generic dataset</td><td>☐ No &nbsp;&nbsp; ☐ Yes: … AI and … real</td></tr>
+    <tr><td class="k">Images shown per session</td><td class="hint">Default is 10</td></tr>
+    <tr><th class="sec" colspan="2">3 · Explanations (phase 2)</th></tr>
+    <tr><td class="k">Which set</td><td>☐ Valencia (Spanish) &nbsp; ☐ Generic (English) &nbsp; ☐ Translation attached &nbsp; ☐ Own texts attached</td></tr>
+    <tr><td class="k">Local notes</td><td class="hint">Anything specific to your region we should know</td></tr>
+    <tr><th class="sec" colspan="2">4 · Interface language (only if not Spanish or English)</th></tr>
+    <tr><td class="k">32 strings translated</td><td>☐ Attached (Appendix B)</td></tr>
+  </table>
+
+  <div class="pfoot"><span>AIwareness · Hub onboarding guide</span><span>06 / 07</span></div>
+</section>
+
+<!-- ============================ PAGE 7 ============================ -->
+<section class="page">
+  <div class="eyebrow"><span class="no">B</span><span>Appendix</span></div>
+  <h2 class="title">Interface strings to translate</h2>
+  <p class="muted">Only needed if your hub's language is neither Spanish nor English. Translate the 32 English strings below, keeping the order. In Route B, these go into <code>lib/i18n.ts</code>.</p>
+
+  <div class="strings" style="margin-top:5mm">
+    <div>
+      <h5>Start screen</h5>
+      <ol start="1">
+        <li>Could you tell a real photo from an AI-generated one? Find out in a minute.</li>
+        <li>Birth year</li>
+        <li>Your hub / city</li>
+        <li>Search your hub...</li>
+        <li>No hub found with that name.</li>
+        <li>I agree to store my birth year and hub anonymously, for the project's statistical purposes only.</li>
+        <li>Enter a valid birth year.</li>
+        <li>We need your consent to store anonymous data.</li>
+        <li>Couldn't save. Please try again.</li>
+        <li>Loading...</li>
+        <li>Start</li>
+      </ol>
+      <h5 class="gap">Quiz</h5>
+      <ol start="12">
+        <li>Couldn't load your hub's content. Please try again.</li>
+        <li>Preparing questions...</li>
+        <li>Real</li>
+        <li>AI-generated</li>
+        <li>Image to evaluate</li>
+      </ol>
+    </div>
+    <div>
+      <h5>Results</h5>
+      <ol start="17">
+        <li>Loading results...</li>
+        <li>Result</li>
+        <li>Here's what you got right and wrong. No worries: that's exactly what the training phase is for.</li>
+        <li>It was AI-generated</li>
+        <li>It was a real image</li>
+        <li>Correct</li>
+        <li>Incorrect</li>
+        <li>I want to learn to identify them better</li>
+        <li>Back to start</li>
+      </ol>
+      <h5 class="gap">Training</h5>
+      <ol start="26">
+        <li>Couldn't load your hub's training content.</li>
+        <li>Loading training...</li>
+        <li>Training</li>
+        <li>AI-generated</li>
+        <li>Real image</li>
+        <li>Finish</li>
+        <li>Next</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="grid">
+      <div><img class="logo" src="assets/gs-logo-white.png" alt="Global Shapers Valencia"></div>
+      <div><h4>Live at</h4><div class="v"><a href="https://aiwareness.vercel.app">aiwareness.vercel.app</a></div></div>
+      <div><h4>Code and contributions</h4><div class="v"><a href="https://github.com/Valencia-Hub-Global-Shapers/aiwareness">github.com/Valencia-Hub-Global-Shapers/aiwareness</a></div></div>
+      <div><h4>Contact</h4><div class="v"><a href="mailto:valencia.globalshapers@gmail.com">valencia.globalshapers@gmail.com</a></div></div>
+    </div>
+    <div class="note-line">AIwareness is a project by the Global Shapers Valencia Hub, a local initiative of the Global Shapers Community, an initiative of the World Economic Forum.</div>
+  </div>
+</section>
+
+</body>
+</html>
