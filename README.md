@@ -40,6 +40,7 @@ aiwareness/
 │   ├── copy-locales-to-public.js  # Genera hubs-index.json + assets estáticos
 │   ├── sync-hubs.js           # Sincroniza locales/ -> tabla "hubs"
 │   ├── setup-storage.js       # Crea el bucket de imágenes (una vez)
+│   ├── import-hf-images.js    # Descarga imágenes al azar de Hugging Face al banco
 │   └── upload-images.js       # Sube content/images/ al bucket
 └── .env.example
 ```
@@ -213,11 +214,24 @@ navegador recordándolo.
 
 **Caso B — aportar imágenes nuevas al banco compartido:**
 
-1. Añade las imágenes nuevas a `content/images/images/` (formato
-   .jpg/.png/.webp, máx. ~5MB cada una) con el siguiente id disponible
-   (`img013.jpg`, `img014.jpg`...).
+1. Añade las imágenes nuevas directamente a `content/images/` (formato
+   .jpg/.png/.webp, máx. ~5MB cada una) con el siguiente id libre
+   del manifest. No crees subcarpetas: el script de
+   subida antepone `images/` a la ruta, y la ruta resultante debe
+   coincidir con el campo `file` del manifest.
 2. Añade su entrada en `content/manifest.json` con `is_ai_generated`
    (true/false).
+
+   *Atajo:* `node scripts/import-hf-images.js [--ai 50] [--real 50]`
+   hace los pasos 1 y 2 por ti con imágenes al azar del dataset
+   [Defactify_Image_Dataset](https://huggingface.co/datasets/Rajarshi-Roy-research/Defactify_Image_Dataset)
+   (Roy et al., 2026): las reales son fotos de MS COCO y las de IA son solo
+   de Midjourney 6 (`Label_B` = 5). Las descarga a `content/images/` con el
+   siguiente id libre y las registra en el manifest, sin repetir la misma
+   escena (caption) entre reales e IA. Aun así, **revisa las imágenes a
+   ojo** (etiqueta correcta, nada inadecuado ni con personas
+   identificables) antes de subirlas; para descartar una, borra el archivo
+   y su línea del manifest.
 3. Referencia esos nuevos ids desde tu `config.json` como en el Caso A.
    Otros hubs también podrán usarlas si les resultan relevantes.
 4. Tras fusionar el PR, quien mantenga el proyecto ejecuta
@@ -248,3 +262,27 @@ python scripts/analyze_results.py
   no hay login ni email obligatorio.
 - Añadir un checkbox de consentimiento antes de guardar datos (ya incluido
   en `app/page.tsx`).
+
+## Créditos de las imágenes
+
+Las imágenes del banco importadas con `scripts/import-hf-images.js`
+proceden del [Defactify_Image_Dataset](https://huggingface.co/datasets/Rajarshi-Roy-research/Defactify_Image_Dataset)
+de Hugging Face: fotos reales de MS COCO e imágenes generadas con
+Midjourney 6. Muchas gracias a Rajarshi Roy y a todo el equipo que lo
+creó y lo publicó en abierto. Si usas estos datos, cita el artículo:
+
+```bibtex
+@misc{roy2026comprehensivedatasethumanvs,
+      title={A Comprehensive Dataset for Human vs. AI Generated Image Detection},
+      author={Rajarshi Roy and Ashhar Aziz and Shashwat Bajpai and Nasrin Imanpour and Gurpreet Singh and Shwetangshu Biswas and Kapil Wanaskar and Parth Patwa and Subhankar Ghosh and Shreyas Dixit and Nilesh Ranjan Pal and Vipula Rawte and Ritvik Garimella and Amitava Das and Amit Sheth and Gaytri Jena and Vasu Sharma and Aishwarya Naresh Reganti and Vinija Jain and Aman Chadha},
+      year={2026},
+      eprint={2601.00553},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2601.00553},
+}
+```
+
+El dataset no declara licencia en su ficha de Hugging Face, y las fotos
+reales provienen de MS COCO (imágenes de Flickr con sus propias licencias
+individuales). Conviene confirmarlo antes de un uso público amplio.

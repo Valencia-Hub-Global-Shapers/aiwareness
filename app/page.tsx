@@ -157,6 +157,28 @@ export default function OnboardingPage() {
         </button>
       </div>
       )}
+
+      <footer className="text-xs text-mute/70">
+        Images from the{" "}
+        <a
+          href="https://huggingface.co/datasets/Rajarshi-Roy-research/Defactify_Image_Dataset"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-2 hover:text-mute"
+        >
+          Defactify Image Dataset
+        </a>{" "}
+        (Roy et al., 2026,{" "}
+        <a
+          href="https://arxiv.org/abs/2601.00553"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-2 hover:text-mute"
+        >
+          arXiv:2601.00553
+        </a>
+        ). Many thanks to the authors for making it open.
+      </footer>
     </main>
   );
 }

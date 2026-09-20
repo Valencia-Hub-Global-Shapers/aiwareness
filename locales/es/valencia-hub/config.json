@@ -7,48 +7,67 @@
   "phase1_pool": [
     "img001", "img002", "img003", "img004", "img005",
     "img006", "img007", "img008", "img009", "img010",
-    "img011", "img012"
+    "img011", "img012", "img013", "img014", "img015",
+    "img016", "img017", "img018", "img019", "img020",
+    "img021", "img022", "img023", "img024", "img025",
+    "img026", "img027", "img028", "img029", "img030",
+    "img031", "img032", "img033", "img034", "img035",
+    "img036", "img037", "img038", "img039", "img040",
+    "img041", "img042", "img043", "img044", "img045",
+    "img046", "img047", "img048", "img049", "img050",
+    "img051", "img052", "img053", "img054", "img055",
+    "img056", "img057", "img058", "img059", "img060",
+    "img061", "img062", "img063", "img064", "img065",
+    "img066", "img067", "img068", "img069", "img070",
+    "img071", "img072", "img073", "img074", "img075",
+    "img076", "img077", "img078", "img079", "img080",
+    "img081", "img082", "img083", "img084", "img085",
+    "img086", "img087", "img088", "img089", "img090",
+    "img091", "img092", "img093", "img094", "img095",
+    "img096", "img097", "img098", "img099", "img100",
+    "img101", "img102", "img103", "img104", "img105",
+    "img106", "img107"
   ],
   "phase1_sample_size": 10,
 
   "phase2": [
     {
-      "id": "img013",
+      "id": "img001",
       "title": "Busca la marca de agua",
       "explanation": "Antes de fijarte en cualquier detalle de la imagen, mira las esquinas: muchos generadores de IA añaden una marca de agua discreta. Gemini, por ejemplo, suele colocar la suya en la esquina inferior derecha. Herramientas como SynthID también incrustan marcas invisibles a simple vista pero detectables con las herramientas adecuadas."
     },
     {
-      "id": "img014",
+      "id": "img002",
       "title": "De contar dedos a leer las manos difíciles",
       "explanation": "Antes bastaba con contar los dedos, pero los modelos actuales ya generan manos correctas en poses normales. Ahora fíjate en interacciones complejas: dedos entrelazados, manos sujetando un objeto pequeño, o manos parcialmente tapadas por pelo o ropa. Mira las manos de la niña sujetando el sandwich: el sandwich parece flotar en vez de estar realmente agarrado, una señal de que la IA no entendió bien el contacto entre la mano y el objeto."
     },
     {
-      "id": "img015",
+      "id": "img003",
       "title": "El texto de fondo ya no engaña",
       "explanation": "La piel perfecta o los brillos simétricos en los ojos ya no delatan una imagen de IA. Lo que sigue fallando es el texto de fondo: carteles, letreros o lomos de libros que a primera vista parecen normales, pero de cerca las letras están mal formadas o no tienen ningún sentido."
     },
     {
-      "id": "img016",
+      "id": "img004",
       "title": "Patrones que se rompen",
       "explanation": "Ladrillos, baldosas, tejidos o vallas deberían repetirse con regularidad matemática. En imágenes generadas por IA, el patrón suele perder esa regularidad o incluso mostrar una costura visible a mitad de la imagen, donde el diseño cambia de forma brusca."
     },
     {
-      "id": "img017",
+      "id": "img005",
       "title": "Sombras y reflejos que no cuadran",
       "explanation": "Comprueba si la sombra apunta hacia la fuente de luz que se ve en la imagen, y si los reflejos en cristales, agua o metal muestran la misma escena que un reflejo real mostraría. Las inconsistencias de física de la luz siguen siendo uno de los fallos más fiables."
     },
     {
-      "id": "img018",
+      "id": "img006",
       "title": "Elementos de fondo repetidos",
       "explanation": "En escenas con multitudes o fondos detallados, busca caras o personas que se repitan de forma casi idéntica, o detalles duplicados de manera poco natural. Los modelos de IA tienden a clonar elementos de fondo en vez de generar variaciones únicas para cada uno."
     },
     {
-      "id": "img019",
+      "id": "img007",
       "title": "Ese color demasiado perfecto",
       "explanation": "Muchos modelos de IA tienen un estilo por defecto reconocible: colores más saturados de lo normal, alto contraste y un acabado casi plastificado, como si todo estuviera sobre-iluminado. Si una foto se ve \"demasiado bonita\" o con una paleta demasiado uniforme para ser real, esa es una pista tan válida como cualquier detalle concreto."
     },
     {
-      "id": "img011",
+      "id": "img085",
       "title": "Want to learn more?",
       "explanation": "Todo esto no es perfecto ni infalible: los modelos mejoran constantemente y estas señales pueden dejar de servir en cualquier momento. Al final, tienes que aplicar tu sentido común y fijarte en si lo que ves te resulta coherente, o si algo simplemente no encaja. Si quieres profundizar más, aquí tienes algunos recursos para estar al día de las últimas señales para detectar imágenes generadas por IA (en inglés): How to Spot an AI-Generated Image in 2026 (https://www.opticflux.com/how-to-spot-an-ai-generated-image-in-2026-the-tells-that-still-work/79504/), How to Spot AI-Generated Images in 2026: Artifacts, C2PA & SynthID (https://www.eyesift.com/blog/how-to-spot-ai-images-2026/), 9 Common AI Image Artifacts: Spot & Fix (https://zsky.ai/blog/ai-image-artifacts-guide), y How to Tell if an Image Is AI-Generated in 2026 (https://endertech.com/blog/6-ways-to-identify-ai-generated-images-with-examples)."
     }
