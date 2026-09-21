@@ -1,4 +1,4 @@
-export type Language = "es" | "en" | "pt";
+export type Language = "es" | "en" | "pt" | "hi" | "mr";
 
 interface Dictionary {
   onboarding: {
@@ -209,7 +209,113 @@ const pt: Dictionary = {
   },
 };
 
-const DICTIONARIES: Record<Language, Dictionary> = { es, en, pt };
+const hi: Dictionary = {
+  onboarding: {
+    subtitle:
+      "क्या आप असली फोटो और AI से बनी फोटो में फर्क बता सकते हैं? एक मिनट में पता लगाएँ।",
+    birthYearLabel: "जन्म वर्ष",
+    hubLabel: "आपका हब / शहर",
+    hubSearchPlaceholder: "अपना हब खोजें...",
+    hubNoResults: "इस नाम से कोई हब नहीं मिला।",
+    consent:
+      "मैं सहमत हूँ कि मेरा जन्म वर्ष और हब गुमनाम रूप से केवल परियोजना के सांख्यिकीय उद्देश्यों के लिए सहेजे जाएँ।",
+    errorInvalidYear: "एक वैध जन्म वर्ष दर्ज करें।",
+    errorConsent: "गुमनाम डेटा सहेजने के लिए हमें आपकी सहमति चाहिए।",
+    errorSave: "सहेजा नहीं जा सका। कृपया फिर से कोशिश करें।",
+    loading: "लोड हो रहा है...",
+    start: "शुरू करें",
+  },
+  phase1: {
+    loadError: "आपके हब की सामग्री लोड नहीं हो सकी। कृपया फिर से कोशिश करें।",
+    preparing: "प्रश्न तैयार किए जा रहे हैं...",
+  },
+  phase2: {
+    loadError: "आपके हब की प्रशिक्षण सामग्री लोड नहीं हो सकी।",
+    loading: "प्रशिक्षण लोड हो रहा है...",
+    trainingLabel: "प्रशिक्षण",
+    aiGenerated: "AI-जनित",
+    realImage: "असली तस्वीर",
+    finish: "समाप्त करें",
+    next: "अगला",
+  },
+  results: {
+    loading: "परिणाम लोड हो रहे हैं...",
+    title: "परिणाम",
+    description:
+      "यह रहा आपने क्या सही और क्या गलत किया। कोई बात नहीं: प्रशिक्षण चरण इसीलिए है।",
+    wasAiGenerated: "यह AI-जनित थी",
+    wasReal: "यह एक असली तस्वीर थी",
+    correct: "सही",
+    incorrect: "गलत",
+    learnMore: "मैं इन्हें बेहतर पहचानना सीखना चाहता हूँ",
+    backHome: "शुरुआत पर लौटें",
+    shareTitle: "अपना परिणाम साझा करें",
+    shareInvite: "क्या आप असली फोटो और AI फोटो में फर्क बता सकते हैं? आज़माएँ:",
+    shareWhatsapp: "व्हाट्सएप",
+    shareCopy: "कॉपी करें",
+    shareCopied: "कॉपी हो गया!",
+  },
+  imageCard: {
+    real: "असली",
+    aiGenerated: "AI-जनित",
+    alt: "आकलन के लिए तस्वीर",
+  },
+};
+
+const mr: Dictionary = {
+  onboarding: {
+    subtitle:
+      "खरा फोटो आणि AI ने तयार केलेला फोटो यातला फरक तुम्ही ओळखू शकता का? एका मिनिटात शोधा.",
+    birthYearLabel: "जन्म वर्ष",
+    hubLabel: "तुमचा हब / शहर",
+    hubSearchPlaceholder: "तुमचा हब शोधा...",
+    hubNoResults: "या नावाचा कोणताही हब सापडला नाही.",
+    consent:
+      "मी सहमत आहे की माझे जन्म वर्ष आणि हब निनावीपणे फक्त प्रकल्पाच्या सांख्यिकीय उद्देशांसाठी साठवले जावेत.",
+    errorInvalidYear: "वैध जन्म वर्ष टाका.",
+    errorConsent: "निनावी माहिती साठवण्यासाठी आम्हाला तुमची संमती हवी आहे.",
+    errorSave: "साठवता आले नाही. कृपया पुन्हा प्रयत्न करा.",
+    loading: "लोड होत आहे...",
+    start: "सुरू करा",
+  },
+  phase1: {
+    loadError: "तुमच्या हबची माहिती लोड होऊ शकली नाही. कृपया पुन्हा प्रयत्न करा.",
+    preparing: "प्रश्न तयार केले जात आहेत...",
+  },
+  phase2: {
+    loadError: "तुमच्या हबची प्रशिक्षण माहिती लोड होऊ शकली नाही.",
+    loading: "प्रशिक्षण लोड होत आहे...",
+    trainingLabel: "प्रशिक्षण",
+    aiGenerated: "AI-निर्मित",
+    realImage: "खरा फोटो",
+    finish: "संपवा",
+    next: "पुढे",
+  },
+  results: {
+    loading: "निकाल लोड होत आहेत...",
+    title: "निकाल",
+    description:
+      "हे बघा तुम्ही काय बरोबर आणि काय चूक केले. काही हरकत नाही: यासाठीच प्रशिक्षण टप्पा आहे.",
+    wasAiGenerated: "हा AI-निर्मित होता",
+    wasReal: "हा एक खरा फोटो होता",
+    correct: "बरोबर",
+    incorrect: "चूक",
+    learnMore: "मला हे अधिक चांगल्या प्रकारे ओळखायला शिकायचे आहे",
+    backHome: "सुरुवातीला परत जा",
+    shareTitle: "तुमचा निकाल शेअर करा",
+    shareInvite: "खरा फोटो आणि AI फोटो यातला फरक तुम्ही ओळखू शकता का? करून बघा:",
+    shareWhatsapp: "व्हॉट्सअॅप",
+    shareCopy: "कॉपी करा",
+    shareCopied: "कॉपी झाले!",
+  },
+  imageCard: {
+    real: "खरे",
+    aiGenerated: "AI-निर्मित",
+    alt: "मूल्यांकनासाठी फोटो",
+  },
+};
+
+const DICTIONARIES: Record<Language, Dictionary> = { es, en, pt, hi, mr };
 
 export function getDictionary(language?: string | null): Dictionary {
   return DICTIONARIES[language as Language] ?? DICTIONARIES.es;
