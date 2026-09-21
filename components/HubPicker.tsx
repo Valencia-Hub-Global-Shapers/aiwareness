@@ -50,7 +50,22 @@ export default function HubPicker({
       />
       <ul className="max-h-60 overflow-auto rounded border border-line-strong bg-white">
         {filtered.length === 0 ? (
-          <li className="px-4 py-3 text-sm text-muted">{noResultsText}</li>
+          <li className="flex flex-col items-center gap-2 px-4 py-8 text-center text-sm text-muted">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-8 w-8 text-line-strong"
+              aria-hidden="true"
+            >
+              <circle cx="10.5" cy="10.5" r="6.5" />
+              <line x1="19" y1="19" x2="15.2" y2="15.2" />
+            </svg>
+            {noResultsText}
+          </li>
         ) : (
           filtered.map((h) => (
             <li key={h.id} ref={h.id === value ? selectedRef : undefined}>
