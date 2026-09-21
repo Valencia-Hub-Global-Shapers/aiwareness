@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Newsreader, Work_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const display = Newsreader({
@@ -29,6 +30,7 @@ export default function RootLayout({
     <html lang="es" className={`${display.variable} ${body.variable}`}>
       <body className="font-body min-h-screen bg-paper text-ink-soft">
         {children}
+        <Analytics />
       </body>
     </html>
   );
