@@ -1,4 +1,4 @@
-export type Language = "es" | "en";
+export type Language = "es" | "en" | "pt";
 
 interface Dictionary {
   onboarding: {
@@ -156,7 +156,60 @@ const en: Dictionary = {
   },
 };
 
-const DICTIONARIES: Record<Language, Dictionary> = { es, en };
+const pt: Dictionary = {
+  onboarding: {
+    subtitle:
+      "Conseguirias distinguir uma foto real de uma gerada por IA? Descobre num minuto.",
+    birthYearLabel: "Ano de nascimento",
+    hubLabel: "O teu hub / cidade",
+    hubSearchPlaceholder: "Procura o teu hub...",
+    hubNoResults: "Não foi encontrado nenhum hub com esse nome.",
+    consent:
+      "Aceito que o meu ano de nascimento e hub sejam guardados de forma anónima, apenas para fins estatísticos do projeto.",
+    errorInvalidYear: "Indica um ano de nascimento válido.",
+    errorConsent: "Precisamos do teu consentimento para guardar dados anónimos.",
+    errorSave: "Não foi possível guardar. Tenta novamente.",
+    loading: "A carregar...",
+    start: "Começar",
+  },
+  phase1: {
+    loadError: "Não foi possível carregar o conteúdo do teu hub. Tenta novamente.",
+    preparing: "A preparar perguntas...",
+  },
+  phase2: {
+    loadError: "Não foi possível carregar o conteúdo formativo do teu hub.",
+    loading: "A carregar treino...",
+    trainingLabel: "Treino",
+    aiGenerated: "Gerada por IA",
+    realImage: "Imagem real",
+    finish: "Terminar",
+    next: "Seguinte",
+  },
+  results: {
+    loading: "A carregar resultados...",
+    title: "Resultado",
+    description:
+      "Isto é o que acertaste e o que erraste. Não faz mal: é para isso que existe a fase de treino.",
+    wasAiGenerated: "Era gerada por IA",
+    wasReal: "Era uma imagem real",
+    correct: "Acertaste",
+    incorrect: "Erraste",
+    learnMore: "Quero aprender a identificá-las melhor",
+    backHome: "Voltar ao início",
+    shareTitle: "Partilha o teu resultado",
+    shareInvite: "Consegues distinguir uma foto real de uma gerada por IA? Experimenta:",
+    shareWhatsapp: "WhatsApp",
+    shareCopy: "Copiar",
+    shareCopied: "Copiado!",
+  },
+  imageCard: {
+    real: "Real",
+    aiGenerated: "Gerada por IA",
+    alt: "Imagem a avaliar",
+  },
+};
+
+const DICTIONARIES: Record<Language, Dictionary> = { es, en, pt };
 
 export function getDictionary(language?: string | null): Dictionary {
   return DICTIONARIES[language as Language] ?? DICTIONARIES.es;
