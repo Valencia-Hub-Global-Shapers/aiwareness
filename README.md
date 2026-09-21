@@ -11,13 +11,18 @@ aiwareness/
 ├── app/                     # Next.js App Router
 │   ├── page.tsx              # Onboarding: año nacimiento + hub/país
 │   ├── phase1/page.tsx       # Modo simple/nativo digital
-│   ├── results/page.tsx      # Resumen de aciertos
+│   ├── results/page.tsx      # Resumen de aciertos + compartir estilo Wordle
 │   └── phase2/page.tsx       # Módulo formativo
 ├── components/
-│   └── ImageCard.tsx          # Tarjeta con botones grandes + swipe opcional
+│   ├── HubPicker.tsx          # Selector de hub con búsqueda
+│   ├── ImageCard.tsx          # Tarjeta con botones grandes + swipe opcional
+│   ├── ShareResults.tsx       # Genera el texto de resultados para compartir
+│   └── ZoomableImage.tsx      # Imagen con zoom/pan táctil
 ├── lib/
 │   ├── supabaseClient.ts
 │   ├── images.ts              # Resuelve URLs de imagen (Storage o local)
+│   ├── hubConfig.ts           # Carga el config.json de un hub concreto
+│   ├── i18n.ts                # Diccionario de textos de interfaz por idioma
 │   ├── pendingAttempts.ts     # Cola de reintento para inserts fallidos
 │   ├── hubs.ts                # Carga el índice de hubs generado en build
 │   ├── sampling.ts            # Aleatorizador: N imágenes del pool del hub
@@ -43,6 +48,12 @@ aiwareness/
 │   ├── import-hf-images.js    # Descarga imágenes al azar de Hugging Face al banco
 │   ├── normalize-images.js    # Iguala nitidez/tamaño de las fotos reales a las de IA
 │   └── upload-images.js       # Sube content/images/ al bucket
+├── docs/                     # Fuente HTML de los documentos imprimibles
+│   ├── one-pager.html         # -> AIwareness-Global-Shapers-Valencia.pdf
+│   ├── hub-onboarding-guide.html  # -> AIwareness-Hub-Onboarding-Guide.pdf
+│   └── build-pdfs.sh          # Regenera los dos PDF desde su HTML
+├── AIwareness-Global-Shapers-Valencia.pdf   # Generado con docs/build-pdfs.sh
+├── AIwareness-Hub-Onboarding-Guide.pdf      # Generado con docs/build-pdfs.sh
 └── .env.example
 ```
 
@@ -150,7 +161,9 @@ No hay ninguna lista de hubs escrita a mano en el código. La carpeta
 4. Cada hub que se una añade su carpeta en `locales/{idioma}/{hub}/` con su
    `config.json` vía Pull Request (ver sección 4). `.github/workflows/ci.yml`
    corre lint + build en cada PR; `validate.yml` valida el contenido de
-   `locales/`; `sync-hubs.yml` sincroniza Supabase al fusionar a `main`.
+   `locales/`; `sync-hubs.yml` sincroniza Supabase al fusionar a `main`;
+   `keep-supabase-awake.yml` hace un ping diario a la API de Supabase para
+   que el proyecto gratuito no se pause por inactividad.
 
 ### C. Vercel (despliegue de la app)
 
@@ -268,6 +281,20 @@ python scripts/analyze_results.py
   no hay login ni email obligatorio.
 - Añadir un checkbox de consentimiento antes de guardar datos (ya incluido
   en `app/page.tsx`).
+
+## Documentos imprimibles
+
+`AIwareness-Global-Shapers-Valencia.pdf` (one-pager) y
+`AIwareness-Hub-Onboarding-Guide.pdf` (guía para nuevos hubs) se generan a
+partir del HTML en `docs/`. Para regenerarlos tras editar el HTML:
+
+```bash
+bash docs/build-pdfs.sh
+```
+
+Necesita Microsoft Edge o Chrome instalado (imprime a PDF en modo headless);
+las fuentes y logos usados están en `docs/assets/`, así que funciona sin
+conexión.
 
 ## Créditos de las imágenes
 
