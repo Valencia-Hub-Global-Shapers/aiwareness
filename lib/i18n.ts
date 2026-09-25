@@ -1,4 +1,4 @@
-export type Language = "es" | "en" | "pt" | "hi" | "mr" | "mfe";
+export type Language = "es" | "en" | "pt" | "hi" | "mr" | "mfe" | "pt-BR";
 
 interface Dictionary {
   onboarding: {
@@ -368,7 +368,68 @@ const mfe: Dictionary = {
   },
 };
 
-const DICTIONARIES: Record<Language, Dictionary> = { es, en, pt, hi, mr, mfe };
+const ptBR: Dictionary = {
+  onboarding: {
+    subtitle:
+      "Você consegue diferenciar uma foto real de uma gerada por IA? Descubra em um minuto.",
+    birthYearLabel: "Ano de nascimento",
+    hubLabel: "Seu hub / cidade",
+    hubSearchPlaceholder: "Procure seu hub...",
+    hubNoResults: "Nenhum hub foi encontrado com esse nome.",
+    consent:
+      "Aceito que meu ano de nascimento e hub sejam salvos de forma anônima, apenas para fins estatísticos do projeto.",
+    errorInvalidYear: "Indique um ano de nascimento válido.",
+    errorConsent: "Precisamos do seu consentimento para salvar dados anônimos.",
+    errorSave: "Não foi possível salvar. Tente novamente.",
+    loading: "Carregando...",
+    start: "Começar",
+  },
+  phase1: {
+    loadError: "Não foi possível carregar o conteúdo do seu hub. Tente novamente.",
+    preparing: "Preparando perguntas...",
+  },
+  phase2: {
+    loadError: "Não foi possível carregar o conteúdo formativo do seu hub.",
+    loading: "Carregando treinamento...",
+    trainingLabel: "Treinamento",
+    aiGenerated: "Gerada por IA",
+    realImage: "Imagem real",
+    finish: "Terminar",
+    next: "Próximo",
+  },
+  results: {
+    loading: "Carregando resultados...",
+    title: "Resultado",
+    description:
+      "Isto é o que você acertou e o que errou. Sem problemas: é exatamente para isso que existe a fase de treinamento.",
+    wasAiGenerated: "Era gerada por IA",
+    wasReal: "Era uma imagem real",
+    correct: "Acertou",
+    incorrect: "Errou",
+    learnMore: "Quero aprender a identificá-las melhor",
+    backHome: "Voltar ao início",
+    shareTitle: "Compartilhe seu resultado",
+    shareInvite: "Você consegue diferenciar uma foto real de uma gerada por IA? Experimente:",
+    shareWhatsapp: "WhatsApp",
+    shareCopy: "Copiar",
+    shareCopied: "Copiado!",
+  },
+  imageCard: {
+    real: "Real",
+    aiGenerated: "Gerada por IA",
+    alt: "Imagem para avaliar",
+  },
+};
+
+const DICTIONARIES: Record<Language, Dictionary> = {
+  es,
+  en,
+  pt,
+  hi,
+  mr,
+  mfe,
+  "pt-BR": ptBR,
+};
 
 export function getDictionary(language?: string | null): Dictionary {
   return DICTIONARIES[language as Language] ?? DICTIONARIES.es;
