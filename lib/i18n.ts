@@ -1,4 +1,4 @@
-export type Language = "es" | "en" | "pt" | "hi" | "mr";
+export type Language = "es" | "en" | "pt" | "hi" | "mr" | "mfe";
 
 interface Dictionary {
   onboarding: {
@@ -315,7 +315,60 @@ const mr: Dictionary = {
   },
 };
 
-const DICTIONARIES: Record<Language, Dictionary> = { es, en, pt, hi, mr };
+const mfe: Dictionary = {
+  onboarding: {
+    subtitle:
+      "Eski ou kapav dir enn foto vre ek enn foto fer par IA? Dekouver dan enn minit.",
+    birthYearLabel: "Lane nesans",
+    hubLabel: "Ou hub / lavil",
+    hubSearchPlaceholder: "Rod ou hub...",
+    hubNoResults: "Pa gagn okenn hub ar sa non-la.",
+    consent:
+      "Mo dakor ki mo lane nesans ek mo hub gard anonim, zis pou bi statistik projet-la.",
+    errorInvalidYear: "Rant enn lane nesans valab.",
+    errorConsent: "Nou bizin ou lakor pou gard done anonim.",
+    errorSave: "Nou pa finn kapav sov. Eseye ankor enn fwa.",
+    loading: "Pe sarze...",
+    start: "Konmanse",
+  },
+  phase1: {
+    loadError: "Nou pa finn kapav sarz kontenu ou hub. Eseye ankor enn fwa.",
+    preparing: "Pe prepar kestion...",
+  },
+  phase2: {
+    loadError: "Nou pa finn kapav sarz kontenu formasyon ou hub.",
+    loading: "Pe sarz formasyon...",
+    trainingLabel: "Formasyon",
+    aiGenerated: "Fer par IA",
+    realImage: "Foto vre",
+    finish: "Fini",
+    next: "Swivan",
+  },
+  results: {
+    loading: "Pe sarz rezilta...",
+    title: "Rezilta",
+    description:
+      "Sa se seki ou finn byen ek seki ou finn mal. Pa gen problem: formasyon-la la pou sa.",
+    wasAiGenerated: "Li ti fer par IA",
+    wasReal: "Li ti enn foto vre",
+    correct: "Korek",
+    incorrect: "Pa korek",
+    learnMore: "Mo anvi aprann pou rekonet zot pli byen",
+    backHome: "Retourn kot kmanse",
+    shareTitle: "Partaz ou rezilta",
+    shareInvite: "Eski ou kapav dir enn foto vre ek enn foto IA? Eseye:",
+    shareWhatsapp: "WhatsApp",
+    shareCopy: "Kopye",
+    shareCopied: "Fini kopye!",
+  },
+  imageCard: {
+    real: "Vre",
+    aiGenerated: "Fer par IA",
+    alt: "Foto pou evalie",
+  },
+};
+
+const DICTIONARIES: Record<Language, Dictionary> = { es, en, pt, hi, mr, mfe };
 
 export function getDictionary(language?: string | null): Dictionary {
   return DICTIONARIES[language as Language] ?? DICTIONARIES.es;
