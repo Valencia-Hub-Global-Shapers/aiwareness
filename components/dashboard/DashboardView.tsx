@@ -291,10 +291,6 @@ export default function DashboardView({
             <Stat label="Hubs" value={view.hubsWithData} />
             <Stat label="Countries" value={view.countries} />
           </div>
-          <p className="-mt-6 text-xs text-muted">
-            Hubs and countries count everywhere with at least one participant,
-            excluding the generic hub.
-          </p>
 
           <div className="flex flex-col gap-2">
             <label htmlFor="hub" className="text-sm font-medium text-ink">
