@@ -319,3 +319,11 @@ creó y lo publicó en abierto. Si usas estos datos, cita el artículo:
 El dataset no declara licencia en su ficha de Hugging Face, y las fotos
 reales provienen de MS COCO (imágenes de Flickr con sus propias licencias
 individuales). Conviene confirmarlo antes de un uso público amplio.
+
+## Dashboard (`/dashboard`)
+
+Pagina con estadisticas agregadas (personas, respuestas, hubs y paises,
+edades, imagenes mas confundidas, filtro por hub). Para activarla, ejecuta
+una vez `supabase/dashboard.sql` en el SQL Editor de Supabase: crea la
+funcion `dashboard_stats()`, que devuelve solo agregados a la anon key, asi
+que no hace falta anadir la `service_role key` a Vercel.
