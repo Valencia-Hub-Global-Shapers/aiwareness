@@ -249,13 +249,24 @@ export default function DashboardView({
 
   return (
     <main className="mx-auto flex min-h-screen max-w-3xl flex-col gap-10 px-6 py-10">
-      <header className="flex flex-col gap-4">
+      <div className="flex items-baseline justify-between gap-2 text-xs">
         <Link
           href="/"
-          className="text-xs font-medium uppercase tracking-[0.16em] text-muted transition hover:text-ink"
+          className="font-medium uppercase tracking-[0.16em] text-muted transition hover:text-ink"
         >
-          AIwareness · Global Shapers
+          Global Shapers
         </Link>
+        <a
+          href="https://valencia-hub-global-shapers.github.io/?lang=en"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue underline underline-offset-2 hover:text-blue-deep"
+        >
+          Made from Valencia Hub
+        </a>
+      </div>
+
+      <header className="flex flex-col gap-4">
         <h1 className="font-display text-5xl leading-none text-ink">Dashboard</h1>
         <p className="text-ink-soft">
           How people are doing at telling real images from AI-generated ones.
