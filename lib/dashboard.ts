@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { GENERIC_HUB_ID } from "@/lib/hubs";
+import { sortHubs } from "@/lib/hubs";
 import type { HubIndexEntry, Manifest } from "@/lib/types";
 
 export interface ParticipantRow {
@@ -68,26 +68,12 @@ function readHubs(): HubIndexEntry[] {
       });
     }
   }
-  return hubs
-    .filter((h) => h.id !== GENERIC_HUB_ID)
-    .sort((a, b) => a.label.localeCompare(b.label));
+  return sortHubs(hubs);
 }
 
 function readManifest(): Manifest {
   const file = path.join(process.cwd(), "content", "manifest.json");
   return JSON.parse(fs.readFileSync(file, "utf8"));
-}
-
-/** El hub genérico no es una ciudad real: se excluye de todas las cifras. */
-function withoutGenericHub(raw: DashboardStats): DashboardStats {
-  const keep = <T extends { hub: string }>(rows: T[]) =>
-    rows.filter((r) => r.hub !== GENERIC_HUB_ID);
-  return {
-    participants: keep(raw.participants),
-    images: keep(raw.images),
-    by_birth_year: keep(raw.by_birth_year),
-    daily: keep(raw.daily),
-  };
 }
 
 /**
@@ -103,7 +89,7 @@ export async function loadDashboardData(): Promise<DashboardData> {
   if (url && key) {
     const client = createClient(url, key);
     const { data, error } = await client.rpc("dashboard_stats");
-    if (!error && data) stats = withoutGenericHub(data as DashboardStats);
+    if (!error && data) stats = data as DashboardStats;
   }
 
   return {
