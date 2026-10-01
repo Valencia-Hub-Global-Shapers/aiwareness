@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { GENERIC_HUB_ID } from "@/lib/hubs";
 import { getImageUrl } from "@/lib/images";
 import type { DashboardStats } from "@/lib/dashboard";
 import type { HubIndexEntry, Manifest } from "@/lib/types";
@@ -141,8 +142,12 @@ export default function DashboardView({
       return AGE_BUCKETS.find((b) => age >= b.min && age <= b.max);
     };
 
-    // Global KPIs: hubs and countries joined are always overall.
-    const activeHubs = new Set(stats.participants.map((p) => p.hub));
+    // Global KPIs: hubs and countries joined are always overall. The
+    // generic hub is not a city, so it does not count as a hub or country
+    // (its people and answers still count everywhere).
+    const activeHubs = new Set(
+      stats.participants.map((p) => p.hub).filter((id) => id !== GENERIC_HUB_ID)
+    );
     const activeCountries = new Set(
       [...activeHubs].map((id) => hubById.get(id)?.country).filter(Boolean)
     );
@@ -286,9 +291,6 @@ export default function DashboardView({
             <Stat label="Hubs" value={view.hubsWithData} />
             <Stat label="Countries" value={view.countries} />
           </div>
-          <p className="-mt-6 text-xs text-muted">
-            Hubs and countries count everywhere with at least one participant.
-          </p>
 
           <div className="flex flex-col gap-2">
             <label htmlFor="hub" className="text-sm font-medium text-ink">

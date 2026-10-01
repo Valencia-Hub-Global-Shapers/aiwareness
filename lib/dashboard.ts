@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createClient } from "@supabase/supabase-js";
+import { sortHubs } from "@/lib/hubs";
 import type { HubIndexEntry, Manifest } from "@/lib/types";
 
 export interface ParticipantRow {
@@ -67,7 +68,7 @@ function readHubs(): HubIndexEntry[] {
       });
     }
   }
-  return hubs.sort((a, b) => a.label.localeCompare(b.label));
+  return sortHubs(hubs);
 }
 
 function readManifest(): Manifest {

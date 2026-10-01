@@ -3,7 +3,12 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
-import { loadHubRegistry, findHub } from "@/lib/hubs";
+import {
+  loadHubRegistry,
+  findHub,
+  sortHubs,
+  GENERIC_HUB_ID,
+} from "@/lib/hubs";
 import { getDictionary } from "@/lib/i18n";
 import HubPicker from "@/components/HubPicker";
 import type { HubIndexEntry } from "@/lib/types";
@@ -14,7 +19,10 @@ import type { HubIndexEntry } from "@/lib/types";
  * Solo es un punto de partida: el usuario puede elegir otro hub, y el país
  * que se guarda sale siempre del hub elegido, no del dispositivo.
  */
-function pickDefaultHub(hubs: HubIndexEntry[]): string {
+function pickDefaultHub(allHubs: HubIndexEntry[]): string {
+  // El hub genérico nunca se preselecciona (salvo que sea el único).
+  const specific = allHubs.filter((h) => h.id !== GENERIC_HUB_ID);
+  const hubs = specific.length > 0 ? specific : allHubs;
   const preferred = navigator.languages?.length
     ? navigator.languages
     : [navigator.language];
@@ -39,9 +47,7 @@ export default function OnboardingPage() {
   useEffect(() => {
     loadHubRegistry()
       .then((registry) => {
-        const sorted = [...registry].sort((a, b) =>
-          a.label.localeCompare(b.label)
-        );
+        const sorted = sortHubs(registry);
         setHubs(sorted);
         if (sorted.length > 0) setHub(pickDefaultHub(sorted));
       })

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { sortHubs } from "@/lib/hubs";
 import type { HubIndexEntry } from "@/lib/types";
 
 interface HubPickerProps {
@@ -26,7 +27,7 @@ export default function HubPicker({
   placeholder,
   noResultsText,
 }: HubPickerProps) {
-  const sortedHubs = [...hubs].sort((a, b) => a.label.localeCompare(b.label));
+  const sortedHubs = sortHubs(hubs);
   const [query, setQuery] = useState("");
   const selectedRef = useRef<HTMLLIElement>(null);
 
