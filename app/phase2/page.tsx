@@ -99,6 +99,10 @@ export default function Phase2Page() {
         </div>
       </div>
 
+      <p className="rounded border border-line px-4 py-3 text-sm leading-relaxed text-muted">
+        {t.genericNotice}
+      </p>
+
       <ZoomableImage
         src={getImageUrl(manifestEntry.file)}
         alt={resource.title}

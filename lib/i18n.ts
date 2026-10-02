@@ -22,6 +22,7 @@ interface Dictionary {
     loadError: string;
     loading: string;
     trainingLabel: string;
+    genericNotice: string;
     aiGenerated: string;
     realImage: string;
     finish: string;
@@ -74,6 +75,8 @@ const es: Dictionary = {
     loadError: "No se pudo cargar el contenido formativo de tu hub.",
     loading: "Cargando entrenamiento...",
     trainingLabel: "Entrenamiento",
+    genericNotice:
+      "Las imágenes y explicaciones de esta fase son ejemplos generales para aprender a detectar imágenes de IA. No analizan las imágenes concretas en las que fallaste.",
     aiGenerated: "Generada por IA",
     realImage: "Imagen real",
     finish: "Terminar",
@@ -127,6 +130,8 @@ const en: Dictionary = {
     loadError: "Couldn't load your hub's training content.",
     loading: "Loading training...",
     trainingLabel: "Training",
+    genericNotice:
+      "The images and explanations in this phase are generic examples to help you learn to spot AI images. They don't cover the specific images you got wrong.",
     aiGenerated: "AI-generated",
     realImage: "Real image",
     finish: "Finish",
@@ -180,6 +185,8 @@ const pt: Dictionary = {
     loadError: "Não foi possível carregar o conteúdo formativo do teu hub.",
     loading: "A carregar treino...",
     trainingLabel: "Treino",
+    genericNotice:
+      "As imagens e explicações desta fase são exemplos gerais para aprenderes a detetar imagens de IA. Não analisam as imagens concretas em que erraste.",
     aiGenerated: "Gerada por IA",
     realImage: "Imagem real",
     finish: "Terminar",
@@ -233,6 +240,8 @@ const hi: Dictionary = {
     loadError: "आपके हब की प्रशिक्षण सामग्री लोड नहीं हो सकी।",
     loading: "प्रशिक्षण लोड हो रहा है...",
     trainingLabel: "प्रशिक्षण",
+    genericNotice:
+      "इस चरण की तस्वीरें और व्याख्याएँ AI तस्वीरों को पहचानना सीखने के लिए सामान्य उदाहरण हैं। ये उन विशिष्ट तस्वीरों का विश्लेषण नहीं करतीं जिनमें आपसे गलती हुई।",
     aiGenerated: "AI-जनित",
     realImage: "असली तस्वीर",
     finish: "समाप्त करें",
@@ -286,6 +295,8 @@ const mr: Dictionary = {
     loadError: "तुमच्या हबची प्रशिक्षण माहिती लोड होऊ शकली नाही.",
     loading: "प्रशिक्षण लोड होत आहे...",
     trainingLabel: "प्रशिक्षण",
+    genericNotice:
+      "या टप्प्यातील फोटो आणि स्पष्टीकरणे AI फोटो ओळखायला शिकण्यासाठी सर्वसाधारण उदाहरणे आहेत. तुमची ज्या फोटोंमध्ये चूक झाली त्यांचे विश्लेषण यात केलेले नाही.",
     aiGenerated: "AI-निर्मित",
     realImage: "खरा फोटो",
     finish: "संपवा",
@@ -339,6 +350,8 @@ const mfe: Dictionary = {
     loadError: "Nou pa finn kapav sarz kontenu formasyon ou hub.",
     loading: "Pe sarz formasyon...",
     trainingLabel: "Formasyon",
+    genericNotice:
+      "Foto ek eksplikasyon dan sa faz-la se egzanp zeneral pou led ou aprann rekonet foto IA. Zot pa analiz bann foto spesifik kot ou finn fer erer.",
     aiGenerated: "Fer par IA",
     realImage: "Foto vre",
     finish: "Fini",
@@ -392,6 +405,8 @@ const ptBR: Dictionary = {
     loadError: "Não foi possível carregar o conteúdo formativo do seu hub.",
     loading: "Carregando treinamento...",
     trainingLabel: "Treinamento",
+    genericNotice:
+      "As imagens e explicações desta fase são exemplos gerais para você aprender a identificar imagens de IA. Elas não analisam as imagens específicas em que você errou.",
     aiGenerated: "Gerada por IA",
     realImage: "Imagem real",
     finish: "Terminar",
@@ -445,6 +460,8 @@ const esAR: Dictionary = {
     loadError: "No se pudo cargar el contenido formativo de tu hub.",
     loading: "Cargando entrenamiento...",
     trainingLabel: "Entrenamiento",
+    genericNotice:
+      "Las imágenes y explicaciones de esta fase son ejemplos generales para aprender a detectar imágenes de IA. No analizan las imágenes concretas en las que fallaste.",
     aiGenerated: "Generada por IA",
     realImage: "Imagen real",
     finish: "Terminar",
