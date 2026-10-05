@@ -7,6 +7,7 @@ import ZoomableImage from "@/components/ZoomableImage";
 import { loadHubConfig, loadManifest } from "@/lib/hubConfig";
 import { getImageUrl } from "@/lib/images";
 import { getDictionary } from "@/lib/i18n";
+import { useDocumentDirection } from "@/lib/useDocumentDirection";
 import type { HubConfig, Manifest } from "@/lib/types";
 
 const URL_PATTERN = /(https?:\/\/[^\s)]+)/g;
@@ -43,6 +44,7 @@ export default function Phase2Page() {
   const [language, setLanguage] = useState<string | null>(null);
 
   const t = getDictionary(language).phase2;
+  useDocumentDirection(language);
 
   useEffect(() => {
     const hub = localStorage.getItem("aiwareness_hub");
@@ -88,8 +90,11 @@ export default function Phase2Page() {
     <main className="mx-auto flex min-h-screen max-w-md flex-col gap-6 px-6 py-10">
       <div className="flex flex-col gap-3">
         <p className="text-sm tabular-nums text-muted">
-          {t.trainingLabel} · {String(index + 1).padStart(2, "0")} /{" "}
-          {String(config.phase2.length).padStart(2, "0")}
+          {t.trainingLabel} ·{" "}
+          <span dir="ltr">
+            {String(index + 1).padStart(2, "0")} /{" "}
+            {String(config.phase2.length).padStart(2, "0")}
+          </span>
         </p>
         <div className="h-0.5 bg-line">
           <div

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ShareResults from "@/components/ShareResults";
 import { getDictionary } from "@/lib/i18n";
+import { useDocumentDirection } from "@/lib/useDocumentDirection";
 import { getImageUrl } from "@/lib/images";
 import type { Attempt, ResolvedImage } from "@/lib/types";
 
@@ -14,6 +15,7 @@ export default function ResultsPage() {
   const [language, setLanguage] = useState<string | null>(null);
 
   const t = getDictionary(language).results;
+  useDocumentDirection(language);
 
   useEffect(() => {
     const storedResults = sessionStorage.getItem("aiwareness_results");
@@ -40,7 +42,10 @@ export default function ResultsPage() {
         <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted">
           {t.title}
         </p>
-        <h1 className="mt-4 font-display text-7xl leading-none tabular-nums text-ink">
+        <h1
+          dir="ltr"
+          className="mt-4 font-display text-7xl leading-none tabular-nums text-ink"
+        >
           {correctCount}
           <span className="text-muted"> / {results.length}</span>
         </h1>

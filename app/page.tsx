@@ -10,6 +10,7 @@ import {
   GENERIC_HUB_ID,
 } from "@/lib/hubs";
 import { getDictionary } from "@/lib/i18n";
+import { useDocumentDirection } from "@/lib/useDocumentDirection";
 import HubPicker from "@/components/HubPicker";
 import type { HubIndexEntry } from "@/lib/types";
 
@@ -56,6 +57,7 @@ export default function OnboardingPage() {
 
   const selectedHub = hubs ? findHub(hubs, hub) : undefined;
   const t = getDictionary(selectedHub?.language).onboarding;
+  useDocumentDirection(selectedHub?.language);
 
   async function handleStart() {
     if (!selectedHub) return;

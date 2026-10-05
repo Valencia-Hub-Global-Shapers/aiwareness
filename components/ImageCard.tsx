@@ -27,7 +27,7 @@ export default function ImageCard({
   return (
     <div className="flex flex-col gap-5">
       <div className="flex flex-col gap-3">
-        <p className="text-sm tabular-nums text-muted">
+        <p dir="ltr" className="text-sm tabular-nums text-muted">
           {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
         </p>
         <div className="h-0.5 bg-line">
