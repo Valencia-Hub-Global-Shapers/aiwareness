@@ -8,6 +8,8 @@ interface ZoomableImageProps {
   alt: string;
   sizes?: string;
   priority?: boolean;
+  /** Serve the file as is, skipping Next/Vercel image optimization. */
+  unoptimized?: boolean;
   className?: string;
   /** Changing this value resets zoom/pan (e.g. pass the current index). */
   resetKey?: string | number;
@@ -26,6 +28,7 @@ export default function ZoomableImage({
   alt,
   sizes,
   priority,
+  unoptimized,
   className = "",
   resetKey,
 }: ZoomableImageProps) {
@@ -93,6 +96,7 @@ export default function ZoomableImage({
           className="object-contain"
           sizes={sizes}
           priority={priority}
+          unoptimized={unoptimized}
         />
       </div>
 

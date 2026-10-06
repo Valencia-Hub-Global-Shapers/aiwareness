@@ -6,7 +6,7 @@ import Image from "next/image";
 import ShareResults from "@/components/ShareResults";
 import { getDictionary } from "@/lib/i18n";
 import { useDocumentDirection } from "@/lib/useDocumentDirection";
-import { getImageUrl } from "@/lib/images";
+import { getImageUrl, shouldOptimize } from "@/lib/images";
 import type { Attempt, ResolvedImage } from "@/lib/types";
 
 export default function ResultsPage() {
@@ -73,6 +73,8 @@ export default function ResultsPage() {
                   src={getImageUrl(question.file)}
                   alt=""
                   fill
+                  sizes="56px"
+                  unoptimized={!shouldOptimize(question.file)}
                   className="object-cover"
                 />
               </div>

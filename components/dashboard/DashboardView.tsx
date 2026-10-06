@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { GENERIC_HUB_ID } from "@/lib/hubs";
-import { getImageUrl } from "@/lib/images";
+import { getImageUrl, shouldOptimize } from "@/lib/images";
 import type { DashboardStats } from "@/lib/dashboard";
 import type { HubIndexEntry, Manifest } from "@/lib/types";
 
@@ -399,6 +399,7 @@ export default function DashboardView({
                         alt=""
                         fill
                         sizes="64px"
+                        unoptimized={!shouldOptimize(r.file)}
                         className="object-cover"
                       />
                     </div>

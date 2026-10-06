@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import ZoomableImage from "@/components/ZoomableImage";
 import { loadHubConfig, loadManifest } from "@/lib/hubConfig";
-import { getImageUrl } from "@/lib/images";
+import { getImageUrl, shouldOptimize } from "@/lib/images";
 import { getDictionary } from "@/lib/i18n";
 import { useDocumentDirection } from "@/lib/useDocumentDirection";
 import type { HubConfig, Manifest } from "@/lib/types";
@@ -111,6 +111,8 @@ export default function Phase2Page() {
       <ZoomableImage
         src={getImageUrl(manifestEntry.file)}
         alt={resource.title}
+        sizes="(max-width: 480px) 100vw, 480px"
+        unoptimized={!shouldOptimize(manifestEntry.file)}
         resetKey={index}
         className="h-[65vh]"
       />
