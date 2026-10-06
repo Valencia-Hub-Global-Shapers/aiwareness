@@ -1,4 +1,16 @@
-export type Language = "es" | "en" | "pt" | "hi" | "mr" | "mfe" | "pt-BR" | "es-AR";
+export type Language =
+  | "es"
+  | "en"
+  | "pt"
+  | "hi"
+  | "mr"
+  | "mfe"
+  | "pt-BR"
+  | "es-AR"
+  | "ps";
+
+/** Languages written right-to-left, for flipping <html dir>. */
+export const RTL_LANGUAGES: readonly string[] = ["ps"];
 
 interface Dictionary {
   onboarding: {
@@ -491,6 +503,61 @@ const esAR: Dictionary = {
   },
 };
 
+const ps: Dictionary = {
+  onboarding: {
+    subtitle:
+      "ایا تاسو د AI جوړ کړی عکس له اصلي عکس نه جلا کولی شئ؟ په یوه منټ کې یې معلوم کړئ.",
+    birthYearLabel: "د زیږون کال",
+    hubLabel: "ستاسو هب / ښار",
+    hubSearchPlaceholder: "خپل هب ولټوئ...",
+    hubNoResults: "د دې نوم سره هیڅ هب ونه موندل شو.",
+    consent:
+      "زه منم چې زما د زېږېدو کال او هب (Hub) زما د نوم نه بغیر، یوازې د پروژې د شمیرو له پاره وساتل شي.",
+    errorInvalidYear: "د زیږون یو سم کال دننه کړئ.",
+    errorConsent: "موږ ته ستاسو موافقت ته اړتیا ده ترڅو ناپیژندلي معلومات خوندي کړو.",
+    errorSave: "خوندي کول ونشول. بیا هڅه وکړئ.",
+    loading: "پورته کیږي...",
+    start: "شروع کړئ",
+  },
+  phase1: {
+    loadError: "ستاسو د هب منځپانګه پورته نشوه. بیا هڅه وکړئ.",
+    preparing: "پوښتنې چمتو کیږي...",
+  },
+  phase2: {
+    loadError: "ستاسو د هب روزنیز منځپانګه پورته نشوه.",
+    loading: "روزنه پورته کیږي...",
+    trainingLabel: "روزنه",
+    genericNotice:
+      "په دې مرحله کې عکسونه او تشریحات عمومي بیلګې دي چې تاسو سره د AI عکسونو پیژندلو زده کولو کې مرسته کوي. دوی هغه ځانګړي عکسونه نه پوښي چې تاسو پکې تېروتنه کړې وه.",
+    aiGenerated: "د AI جوړ شوی",
+    realImage: "اصلي عکس",
+    finish: "پای ته رسول",
+    next: "راتلونکی",
+  },
+  results: {
+    loading: "پایلې پورته کیږي...",
+    title: "پایله",
+    description:
+      "دلته وګورئ چې کونجې ځوابونه ستاسو سم وو او کونجې غلط. څه خبره نه ده، سړی له غلطیو نه زده کړه کوي.",
+    wasAiGenerated: "دا د AI لخوا جوړ شوی و",
+    wasReal: "دا اصلي عکس وو.",
+    correct: "سم",
+    incorrect: "غلط",
+    learnMore: "زه غواړم چې د اصلي او AI جوړ شوو عکسونو په پېژندلو کې نور هم تکړه شم.",
+    backHome: "بیا شروع کړئ",
+    shareTitle: "خپل ځوابونه (رزلټ) شریک کړئ",
+    shareInvite: "ایا تاسو اصلي عکس له AI جوړ شوي عکس نه پېژندلی شئ؟ کوشش وکړئ:",
+    shareWhatsapp: "واټساپ",
+    shareCopy: "کاپي کول",
+    shareCopied: "کاپي شو!",
+  },
+  imageCard: {
+    real: "اصلي",
+    aiGenerated: "د AI جوړ شوی",
+    alt: "د ارزونې لپاره عکس",
+  },
+};
+
 const DICTIONARIES: Record<Language, Dictionary> = {
   es,
   en,
@@ -500,6 +567,7 @@ const DICTIONARIES: Record<Language, Dictionary> = {
   mfe,
   "pt-BR": ptBR,
   "es-AR": esAR,
+  ps,
 };
 
 export function getDictionary(language?: string | null): Dictionary {

@@ -8,6 +8,7 @@ import { sampleHubImages } from "@/lib/sampling";
 import { loadHubConfig, loadManifest } from "@/lib/hubConfig";
 import { getImageUrl, shouldOptimize } from "@/lib/images";
 import { getDictionary } from "@/lib/i18n";
+import { useDocumentDirection } from "@/lib/useDocumentDirection";
 import type { Attempt, HubConfig, ResolvedImage } from "@/lib/types";
 
 interface Participant {
@@ -42,6 +43,7 @@ export default function Phase1Page() {
   const [loadError, setLoadError] = useState("");
 
   const t = getDictionary(participant?.language).phase1;
+  useDocumentDirection(participant?.language);
 
   useEffect(() => {
     const found = readParticipant();
