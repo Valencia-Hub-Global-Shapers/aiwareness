@@ -5,6 +5,7 @@ import { getDictionary } from "@/lib/i18n";
 
 interface ImageCardProps {
   imageUrl: string;
+  unoptimized?: boolean;
   index: number;
   total: number;
   language?: string | null;
@@ -17,6 +18,7 @@ interface ImageCardProps {
  */
 export default function ImageCard({
   imageUrl,
+  unoptimized,
   index,
   total,
   language,
@@ -43,6 +45,7 @@ export default function ImageCard({
         alt={t.alt}
         sizes="(max-width: 480px) 100vw, 480px"
         priority
+        unoptimized={unoptimized}
         resetKey={index}
         className="h-[65vh]"
       />

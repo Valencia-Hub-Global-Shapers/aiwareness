@@ -10,6 +10,15 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const IMAGE_BANK_VERSION = "2";
 
 /**
+ * Los PNG del banco pesan MB; los JPG, decenas de KB. Solo los PNG merecen
+ * pasar por el optimizador de imagenes de Vercel (cuenta contra el limite
+ * de transformaciones del plan Hobby); los JPG se sirven tal cual.
+ */
+export function shouldOptimize(file: string): boolean {
+  return file.endsWith(".png");
+}
+
+/**
  * Resuelve la ruta de una imagen del manifest (p. ej. "images/img001.jpg")
  * a una URL cargable por <Image>.
  *

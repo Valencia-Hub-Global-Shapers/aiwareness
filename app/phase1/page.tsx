@@ -6,7 +6,7 @@ import ImageCard from "@/components/ImageCard";
 import { saveAttempt, flushPendingAttempts } from "@/lib/pendingAttempts";
 import { sampleHubImages } from "@/lib/sampling";
 import { loadHubConfig, loadManifest } from "@/lib/hubConfig";
-import { getImageUrl } from "@/lib/images";
+import { getImageUrl, shouldOptimize } from "@/lib/images";
 import { getDictionary } from "@/lib/i18n";
 import type { Attempt, HubConfig, ResolvedImage } from "@/lib/types";
 
@@ -130,6 +130,7 @@ export default function Phase1Page() {
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-6 py-12">
       <ImageCard
         imageUrl={getImageUrl(question.file)}
+        unoptimized={!shouldOptimize(question.file)}
         index={currentIndex}
         total={images.length}
         language={participant?.language}
