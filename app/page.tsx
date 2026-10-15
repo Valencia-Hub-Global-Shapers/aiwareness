@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
 import {
@@ -109,10 +110,22 @@ export default function OnboardingPage() {
 
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col px-6 py-10">
-      <div className="flex items-baseline justify-between gap-2 text-xs">
-        <p className="font-medium uppercase tracking-[0.16em] text-muted">
-          Global Shapers
-        </p>
+      <div className="flex items-center justify-between gap-4 text-xs">
+        <a
+          href="https://valencia-hub-global-shapers.github.io/?lang=en"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="shrink-0"
+        >
+          <Image
+            src="/valencia-hub-logo.png"
+            alt="Global Shapers Community Valencia"
+            width={231}
+            height={200}
+            priority
+            className="h-20 w-auto"
+          />
+        </a>
         <a
           href="https://valencia-hub-global-shapers.github.io/?lang=en"
           target="_blank"
@@ -123,7 +136,7 @@ export default function OnboardingPage() {
         </a>
       </div>
 
-      <header className="mb-10 mt-16">
+      <header className="mb-10 mt-12">
         <h1 className="font-display text-5xl leading-none text-ink">
           AIwareness
         </h1>
